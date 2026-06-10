@@ -1,0 +1,15 @@
+# ----------------------------------------
+# Technologie – Details: Browser
+# Konto: agentur-jg.de
+# Property: agentur-jg.de
+# ----------------------------------------
+# 
+# Alle Nutzer
+# Startdatum: 20260513
+# Enddatum: 20260609
+Browser,Aktive Nutzer,Neue Nutzer,Sitzungen mit Interaktionen,Engagement-Rate,Sitzungen mit Interaktionen pro aktivem Nutzer,Durchschnittliche Interaktionsdauer pro aktivem Nutzer,Ereignisanzahl,Schlüsselereignisse,Gesamtumsatz
+Chrome,21,21,12,0.5217391304347826,0.5714285714285714,29.476190476190474,172,3,0
+Firefox,4,4,1,0.25,0.25,11.25,24,0,0
+Safari,3,3,1,0.3333333333333333,0.3333333333333333,3.6666666666666665,15,0,0
+Android Webview,1,1,1,1,1,0,5,1,0
+Samsung Internet,1,1,0,0,0,5,5,0,0

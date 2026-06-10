@@ -1,0 +1,92 @@
+# ----------------------------------------
+# Technologie – Übersicht
+# Konto: agentur-jg.de
+# Property: agentur-jg.de
+# ----------------------------------------
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+Plattform,Aktive Nutzer
+"[""Web""]",30
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+Betriebssystem,Aktive Nutzer
+Windows,14
+Macintosh,7
+Android,4
+iOS,3
+Linux,2
+Chrome OS,1
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+Plattform-/Gerätekategorie,Aktive Nutzer
+web / desktop,23
+web / mobile,8
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+Browser,Aktive Nutzer
+Chrome,21
+Firefox,4
+Safari,3
+Android Webview,1
+Samsung Internet,1
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+Gerätekategorie,Aktive Nutzer
+desktop,23
+mobile,8
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+Bildschirmauflösung,Aktive Nutzer
+3440x1440,8
+1920x1200,6
+800x600,4
+1536x864,2
+384x832,2
+402x874,2
+1368x912,1
+1680x1050,1
+1920x10695,1
+1920x1080,1
+1920x16268,1
+360x780,1
+440x956,1
+810x1183,1
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+X. Tag
+
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+App,Version,Status
+
+
+#  
+# Startdatum: 20260609
+# Enddatum: 20260609
+App,Nutzer ohne Abstürze
+
+
+# Startdatum: 20260608
+# Enddatum: 20260608
+App,Nutzer ohne Abstürze
+
+
+#  
+# Startdatum: 20260513
+# Enddatum: 20260609
+Gerätemodell,Aktive Nutzer

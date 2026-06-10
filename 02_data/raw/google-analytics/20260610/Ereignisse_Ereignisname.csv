@@ -1,0 +1,23 @@
+# ----------------------------------------
+# Ereignisse: Ereignisname
+# Konto: agentur-jg.de
+# Property: agentur-jg.de
+# ----------------------------------------
+# 
+# Alle Nutzer
+# Startdatum: 20260513
+# Enddatum: 20260609
+Ereignisname,Ereignisanzahl,Nutzer insgesamt,Ereignisanzahl pro aktivem Nutzer,Gesamtumsatz
+page_view,50,28,1.7857142857142858,0
+user_engagement,39,16,2.4375,0
+session_start,32,30,1.0666666666666667,0
+first_visit,30,30,1,0
+scroll,30,14,2.142857142857143,0
+https://agentur-jg.de/,19,12,1.5833333333333333,0
+https://agentur-jg.de/datenschutzerklaer,5,4,1.25,0
+ads_conversion_Kontakt_1,4,4,1,0
+https://gtm-msr.appspot.com/render?id=GT,4,2,2,0
+https://agentur-jg.de/kontakt/,3,3,1,0
+https://agentur-jg.de/website-check/,3,3,1,0
+click,1,1,1,0
+https://agentur-jg.de/impressum/,1,1,1,0

@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: "Hanken Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
+
+@layer components {
+  .site-header {
+    @apply fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300;
+    color: #1a2238;
+  }
+
+  .site-header.is-scrolled,
+  .site-header.is-open {
+    border-bottom-color: rgba(26, 34, 56, 0.1);
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 1px 2px rgba(20, 26, 43, 0.04), 0 10px 30px rgba(20, 26, 43, 0.06);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+
+  .site-header.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  .site-header__inner {
+    @apply mx-auto flex h-[88px] max-w-[1200px] items-center justify-between gap-6 px-5 py-2 sm:px-8 lg:px-10;
+  }
+
+  .site-brand {
+    @apply inline-flex min-w-0 flex-none items-center gap-2.5 text-[#1A2238] transition hover:text-[#131A2B];
+  }
+
+  .site-brand__mark {
+    @apply block h-11 w-11 flex-none object-contain sm:h-12 sm:w-12;
+  }
+
+  .site-brand__logo {
+    @apply block h-auto w-[220px] object-contain sm:w-[252px] lg:w-[286px];
+  }
+
+  .site-brand__logo--footer {
+    @apply w-[230px] sm:w-[250px];
+  }
+
+  .site-brand__text {
+    @apply block min-w-0 leading-none;
+  }
+
+  .site-brand__name {
+    @apply block whitespace-nowrap text-[1.2rem] font-bold leading-none tracking-normal sm:text-[1.35rem];
+  }
+
+  .site-brand__subline {
+    @apply mt-1 block whitespace-nowrap text-[0.58rem] font-medium leading-none text-[#51607C] sm:text-[0.62rem];
+    letter-spacing: 0.03em;
+  }
+
+  .site-nav {
+    @apply hidden items-center gap-[30px] lg:flex;
+  }
+
+  .site-nav a {
+    @apply relative whitespace-nowrap text-[0.95rem] font-medium text-[#51607C] transition-colors duration-150 hover:text-[#1A2238];
+  }
+
+  .site-nav a::after {
+    @apply absolute left-0 top-[calc(100%+6px)] h-px w-full origin-left scale-x-0 bg-[#3D5A80] transition-transform duration-200 content-[''];
+  }
+
+  .site-nav a:hover::after,
+  .site-nav a:focus-visible::after {
+    @apply scale-x-100;
+  }
+
+  .site-header__actions {
+    @apply flex flex-none items-center gap-3;
+  }
+
+  .site-header__cta,
+  .site-mobile-nav__cta {
+    @apply inline-flex items-center justify-center rounded-[10px] border border-transparent bg-[#1A2238] px-5 py-3 text-[0.95rem] font-semibold leading-none text-white shadow-sm transition duration-200 hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80];
+  }
+
+  .site-header__cta {
+    @apply hidden md:inline-flex;
+  }
+
+  .site-menu-toggle {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-[10px] border border-[rgba(26,34,56,0.16)] bg-white/60 text-[#1A2238] transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80] lg:hidden;
+  }
+
+  .site-menu-toggle svg {
+    @apply h-[22px] w-[22px];
+  }
+
+  .site-mobile-nav {
+    @apply fixed inset-x-0 top-[88px] z-40 flex flex-col gap-1 border-b border-[rgba(26,34,56,0.10)] bg-white/95 px-5 pb-7 pt-4 shadow-lg backdrop-blur-md sm:px-8 lg:hidden;
+  }
+
+  .site-mobile-nav[hidden] {
+    @apply hidden;
+  }
+
+  .site-mobile-nav a {
+    @apply border-b border-[rgba(26,34,56,0.10)] px-1 py-3 text-[1.05rem] font-semibold text-[#1A2238] transition hover:text-[#3D5A80] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80];
+  }
+
+  .site-mobile-nav .site-mobile-nav__cta {
+    @apply mt-4 w-full border-0 px-5 py-4 text-base text-white hover:text-white;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    will-change: opacity, transform, filter;
+  }
+
+  .scroll-reveal__word {
+    display: inline-block;
+    will-change: opacity, transform, filter;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .scroll-reveal {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .js .scroll-reveal__word {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+}
