@@ -596,3 +596,43 @@ function agentur_jg_handle_contact_form(): void
     exit;
 }
 add_action('init', 'agentur_jg_handle_contact_form', 10);
+
+function agentur_jg_seo_config(): array
+{
+    static $cache = null;
+
+    if ($cache !== null) {
+        return $cache;
+    }
+
+    if (is_front_page()) {
+        $slug = 'home';
+    } else {
+        $slug = get_post_field('post_name', get_queried_object_id());
+    }
+
+    if (empty($slug)) {
+        $cache = [];
+        return $cache;
+    }
+
+    $file = get_template_directory() . '/seo/' . $slug . '.json';
+
+    if (! file_exists($file)) {
+        $cache = [];
+        return $cache;
+    }
+
+    $cache = json_decode(file_get_contents($file), true) ?? [];
+    return $cache;
+}
+
+add_filter('rank_math/frontend/title', function (string $title): string {
+    $config = agentur_jg_seo_config();
+    return $config['title'] ?? $title;
+});
+
+add_filter('rank_math/frontend/description', function (string $description): string {
+    $config = agentur_jg_seo_config();
+    return $config['description'] ?? $description;
+});
