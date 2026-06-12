@@ -1,0 +1,22 @@
+{
+  "title": "Website Analyse KMU | Agentur JG",
+  "description": "Website Analyse KMU: Google Analytics einrichten, Website Tracking DSGVO-bewusst prüfen und erkennen, welche Maßnahmen wirken.",
+  "faq": [
+    {
+      "q": "Was gehört zu einer Website Analyse für KMU?",
+      "a": "Dazu gehören technische Prüfung, Nutzerwege, wichtige Seiten, Tracking-Setup, Conversion-Punkte und eine Einordnung, welche Maßnahmen priorisiert werden sollten."
+    },
+    {
+      "q": "Kann Google Analytics DSGVO-konform eingerichtet werden?",
+      "a": "Google Analytics muss mit Consent, passenden Einstellungen und sauberer Einbindung geplant werden. Eine rechtliche Beratung ersetzt das nicht, aber die technische Umsetzung kann DSGVO-bewusst erfolgen."
+    },
+    {
+      "q": "Welche Aktionen sollte eine Website messen?",
+      "a": "Wichtig sind meist Formularsendungen, Klicks auf Telefon und E-Mail, Terminbuchungen, Downloads und zentrale Schritte auf dem Weg zur Anfrage."
+    },
+    {
+      "q": "Brauche ich Tracking auch bei wenig Traffic?",
+      "a": "Ja, gerade dann. Bei wenig Traffic ist es wichtig zu wissen, welche Quellen und Seiten wertvoll sind, damit Budget und Zeit nicht in die falsche Richtung laufen."
+    }
+  ]
+}

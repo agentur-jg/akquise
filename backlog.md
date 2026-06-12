@@ -1,6 +1,6 @@
 # Backlog – Kanal SEO
 **Ziel:** 1 qualifizierter SEO-Lead pro Monat → langfristig 1 Neukunde/Monat über organische Suche  
-**Stand:** 11. Juni 2026 | Stufe 1 abgeschlossen | Basis: SEO Audit `02_data/processed/seo-audit-20260610.md`
+**Stand:** 12. Juni 2026 | Stufe 1 + Stufe 4 (Leistungsseiten + Inhaltsseiten) abgeschlossen | Basis: SEO Audit `02_data/processed/seo-audit-20260610.md`
 
 ---
 
@@ -26,18 +26,21 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
   Title: *„Webdesign & Online-Marketing für KMU | Agentur JG – Katzenelnbogen"*  
   Meta: *„Agentur JG hilft kleinen Unternehmen, online sichtbar zu werden und mehr Anfragen zu gewinnen. Aus Katzenelnbogen, für den Mittelstand."*  
   Verwaltet in `03_theme/seo/home.json`, geladen via `agentur_jg_seo_config()` in functions.php.
-
+  
+= Umgesetzt am 11.06.2026
 ---
 
 ### Stufe 2 – Google Business Profile (1 Woche, höchste lokale Wirkung)
 > Das GBP ist das wirksamste kostenlose SEO-Tool für lokale Dienstleister.
 
-- [ ] **Google Business Profile anlegen und verifizieren**  
-  Branche: „Marketing-Agentur" + „Webdesign". Adresse: Katzenelnbogen. Öffnungszeiten, Telefon, Website eintragen.  
-  Direkte Wirkung: Erscheinen im „Local Pack" bei Suchen wie *„Webdesign Rhein-Lahn-Kreis"* oder *„Online-Marketing Westerwald"*.
+- [x] **Google Business Profile anlegen und verifizieren**  
+  Profil erstellt. Privatadresse zur Verifikation hinterlegt (nicht öffentlich). Profil als Dienstleister im Einzugsgebiet (Rhein-Lahn-Kreis, Limburg, Rheingau-Taunus-Kreis) eingerichtet – kein öffentlicher Standort.  
+  Erstabnahme durch Google abgelehnt (Grund: fehlende Kundenpräsenz vor Ort / Einstufung als Online-Unternehmen).  
+  Einspruch eingereicht am 11.06.2026 inkl. Gewerbeanmeldung als Nachweis. Entscheidung per E-Mail ausstehend.  
+  Profil-Beschreibung angepasst: Hinweis auf persönliche Beratungstermine beim Kunden ergänzt.
 
-- [ ] **GBP-Beschreibung mit Keywords befüllen**  
-  Die 750-Zeichen-Beschreibung gezielt mit Leistungen + Region bestücken.
+- [x] **GBP-Beschreibung mit Keywords befüllen**  
+  Beschreibung befüllt mit Leistungen, Region und Hinweis auf Vor-Ort-Beratung. Umgesetzt am 11.06.2026.
 
 - [ ] **Erste 3–5 Kundenbewertungen einholen**  
   Bestehende Referenzkunden (KOPP Umwelt, Max KFZ) aktiv um Google-Bewertungen bitten. Bewertungsanzahl ist direkter Rankingfaktor im Local Pack.
@@ -62,21 +65,34 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 ### Stufe 4 – Dedizierte Landingpages (2–4 Wochen, größter langfristiger Hebel)
 > Die Startseite kann nicht für alle Keywords ranken. Jede Leistung braucht eine eigene URL.
 
-- [ ] **Service-Seite: Webdesign / Website-Erstellung**  
-  URL: `/webdesign-fuer-kmu/` oder `/website-erstellen-lassen/`  
-  Zielkeyword: „Website erstellen lassen KMU" / „Webdesign [Region]"
+- [x] **Service-Seite: Webdesign / Website-Erstellung**  
+  URL: `/website-erstellen-lassen/` – Umgesetzt 12.06.2026. Generisches Template `page-leistung.php`, SEO-JSON mit FAQPage-Schema.
 
-- [ ] **Service-Seite: SEO & lokale Sichtbarkeit**  
-  URL: `/seo-fuer-kleine-unternehmen/`  
-  Zielkeyword: „SEO für KMU" / „lokale Sichtbarkeit verbessern"
+- [x] **Service-Seite: SEO & lokale Sichtbarkeit**  
+  URL: `/seo/` – Umgesetzt 12.06.2026.
+
+- [x] **Service-Seite: Website-Optimierung**  
+  URL: `/website-optimierung/` – Umgesetzt 12.06.2026.
+
+- [x] **Service-Seite: Google Ads**  
+  URL: `/google-ads/` – Umgesetzt 12.06.2026.
+
+- [x] **Service-Seite: Mehr Anfragen / Conversion-Optimierung**  
+  URL: `/mehr-anfragen/` – Umgesetzt 12.06.2026.
+
+- [x] **Service-Seite: Tracking & Auswertung**  
+  URL: `/website-analyse/` – Umgesetzt 12.06.2026.
+
+- [x] **Leistungsübersicht (Hub)**  
+  URL: `/leistungen/` – Umgesetzt 12.06.2026. Verlinkung zu allen 6 Einzelseiten.
+
+- [x] **Inhaltsseiten: Ablauf, Referenzen, Über mich**  
+  URLs: `/ablauf/`, `/referenzen/`, `/ueber-mich/` – Alle mit SEO-JSON + FAQPage-Schema. Umgesetzt 12.06.2026.
 
 - [ ] **Lokale Landingpage: Region Rhein-Lahn / Westerwald**  
   URL: `/webdesign-rhein-lahn-kreis/`  
   Zielkeyword: „Webdesign Rhein-Lahn-Kreis" / „Online-Marketing Westerwald"  
   Hinweis: Lokale Landingpages mit Ortsangaben ranken schneller als generische Service-Seiten.
-
-- [ ] **(Optional) Service-Seite: Google Ads**  
-  URL: `/google-ads-betreuung/`
 
 ---
 

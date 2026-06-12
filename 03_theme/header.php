@@ -21,15 +21,15 @@
             >
             <span class="site-brand__text">
                 <span class="site-brand__name"><?php esc_html_e('Agentur JG', 'agentur-jg-theme'); ?></span>
-                <span class="site-brand__subline"><?php esc_html_e('Strategisches Onlinemarketing', 'agentur-jg-theme'); ?></span>
+                <span class="site-brand__subline"><?php esc_html_e('Strategisches Online-Marketing', 'agentur-jg-theme'); ?></span>
             </span>
         </a>
 
         <nav class="site-nav" aria-label="<?php esc_attr_e('Hauptnavigation', 'agentur-jg-theme'); ?>">
-            <a href="<?php echo esc_url(home_url('/#leistungen')); ?>"><?php esc_html_e('Leistungen', 'agentur-jg-theme'); ?></a>
-            <a href="<?php echo esc_url(home_url('/#methode')); ?>"><?php esc_html_e('Ablauf', 'agentur-jg-theme'); ?></a>
-            <a href="<?php echo esc_url(home_url('/#referenzen')); ?>"><?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?></a>
-            <a href="<?php echo esc_url(home_url('/#ueber-jona')); ?>"><?php esc_html_e('Über mich', 'agentur-jg-theme'); ?></a>
+            <a href="<?php echo esc_url(home_url('/leistungen/')); ?>"><?php esc_html_e('Leistungen', 'agentur-jg-theme'); ?></a>
+            <a href="<?php echo esc_url(home_url('/ablauf/')); ?>"><?php esc_html_e('Ablauf', 'agentur-jg-theme'); ?></a>
+            <a href="<?php echo esc_url(home_url('/referenzen/')); ?>"><?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?></a>
+            <a href="<?php echo esc_url(home_url('/ueber-mich/')); ?>"><?php esc_html_e('Über mich', 'agentur-jg-theme'); ?></a>
         </nav>
 
         <div class="site-header__actions">
@@ -54,10 +54,10 @@
     </div>
 
     <nav id="site-mobile-nav" class="site-mobile-nav" aria-label="<?php esc_attr_e('Mobile Navigation', 'agentur-jg-theme'); ?>" hidden data-mobile-nav>
-        <a href="<?php echo esc_url(home_url('/#leistungen')); ?>"><?php esc_html_e('Leistungen', 'agentur-jg-theme'); ?></a>
-        <a href="<?php echo esc_url(home_url('/#methode')); ?>"><?php esc_html_e('Ablauf', 'agentur-jg-theme'); ?></a>
-        <a href="<?php echo esc_url(home_url('/#referenzen')); ?>"><?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?></a>
-        <a href="<?php echo esc_url(home_url('/#ueber-jona')); ?>"><?php esc_html_e('Über mich', 'agentur-jg-theme'); ?></a>
+        <a href="<?php echo esc_url(home_url('/leistungen/')); ?>"><?php esc_html_e('Leistungen', 'agentur-jg-theme'); ?></a>
+        <a href="<?php echo esc_url(home_url('/ablauf/')); ?>"><?php esc_html_e('Ablauf', 'agentur-jg-theme'); ?></a>
+        <a href="<?php echo esc_url(home_url('/referenzen/')); ?>"><?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?></a>
+        <a href="<?php echo esc_url(home_url('/ueber-mich/')); ?>"><?php esc_html_e('Über mich', 'agentur-jg-theme'); ?></a>
         <a class="site-mobile-nav__cta" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
             <?php esc_html_e('Unverbindlich anfragen', 'agentur-jg-theme'); ?>
         </a>

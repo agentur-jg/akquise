@@ -1,0 +1,143 @@
+﻿<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leistungsseiten – Redesign · Agentur JG</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["'Hanken Grotesk'", 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            sans: ["'Inter'", 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ["'IBM Plex Mono'", 'ui-monospace', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      color: #51607C;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+    }
+    ::selection { background: #98C1D9; color: #1A2238; }
+
+    /* Reveal animation base — visible end-state is the default so that
+       no-JS / reduced-motion / print all show content. */
+    /* Reveal: transform-only so a frozen animation clock can never hide content.
+       opacity stays 1 at every step — worst case content is visible, just un-slid. */
+    [data-reveal] { opacity: 1; transform: none; }
+    .anim [data-reveal] { transform: translateY(24px); transition: transform .65s cubic-bezier(.22,.61,.36,1); }
+    .anim [data-reveal].is-in { transform: none; }
+
+    /* Accordion smooth height via grid-rows */
+    .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .42s cubic-bezier(.22,.61,.36,1); }
+    .faq-item.open .faq-body { grid-template-rows: 1fr; }
+    .faq-body > div { overflow: hidden; }
+    .faq-item .faq-icon { transition: transform .35s cubic-bezier(.22,.61,.36,1); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .anim [data-reveal] { transform: none !important; }
+      .faq-body { transition: none; }
+    }
+
+    /* Preview switcher (mockup chrome only — not part of the page) */
+    .preview-bar {
+      position: fixed; z-index: 80; left: 50%; bottom: 22px; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 12px;
+      padding: 9px 9px 9px 18px; border-radius: 999px;
+      background: rgba(26,34,56,.94); color: #fff;
+      box-shadow: 0 12px 40px rgba(20,26,43,.34); backdrop-filter: blur(8px);
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    }
+    .preview-bar label { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #98C1D9; }
+    .preview-bar select {
+      appearance: none; border: 0; border-radius: 999px; cursor: pointer;
+      background: #fff; color: #1A2238; font-weight: 600; font-family: 'Inter', sans-serif;
+      font-size: 14px; padding: 9px 38px 9px 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231A2238' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
+    .preview-bar select:focus-visible { outline: 2px solid #98C1D9; outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-white text-[#51607C] antialiased">
+
+  <!-- ============ HEADER (faithful, simplified) ============ -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-[rgba(26,34,56,0.10)] bg-white/85 backdrop-blur-md backdrop-saturate-150">
+    <div class="mx-auto flex h-[88px] max-w-[1200px] items-center justify-between gap-6 px-5 py-2 sm:px-8 lg:px-10">
+      <a class="inline-flex min-w-0 flex-none items-center gap-2.5 text-[#1A2238]" href="#">
+        <img class="block h-11 w-11 flex-none object-contain sm:h-12 sm:w-12" src="assets/AgenturJG_Logo-Initialien.png" alt="" aria-hidden="true">
+        <span class="block min-w-0 leading-none">
+          <span class="block whitespace-nowrap text-[1.2rem] font-bold leading-none sm:text-[1.35rem]">Agentur JG</span>
+          <span class="mt-1 block whitespace-nowrap text-[0.5rem] font-medium leading-none text-[#51607C] sm:text-[0.54rem]" style="letter-spacing:.01em">Strategisches Online-Marketing</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-[30px] lg:flex" aria-label="Hauptnavigation">
+        <a class="whitespace-nowrap text-[0.95rem] font-medium text-[#51607C] transition-colors hover:text-[#1A2238]" href="#">Leistungen</a>
+        <a class="whitespace-nowrap text-[0.95rem] font-medium text-[#51607C] transition-colors hover:text-[#1A2238]" href="#">Ablauf</a>
+        <a class="whitespace-nowrap text-[0.95rem] font-medium text-[#51607C] transition-colors hover:text-[#1A2238]" href="#">Referenzen</a>
+        <a class="whitespace-nowrap text-[0.95rem] font-medium text-[#51607C] transition-colors hover:text-[#1A2238]" href="#">Über mich</a>
+      </nav>
+
+      <div class="flex flex-none items-center gap-3">
+        <a class="hidden items-center justify-center rounded-[10px] bg-[#1A2238] px-5 py-3 text-[0.95rem] font-semibold leading-none text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md md:inline-flex" href="#kontakt">Unverbindlich anfragen</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE (rendered by leistung-app.js) ============ -->
+  <main id="page" class="pt-[88px]"></main>
+
+  <!-- ============ FOOTER (compact) ============ -->
+  <footer class="border-t border-[rgba(26,34,56,0.10)] bg-white">
+    <div class="mx-auto flex max-w-[1200px] flex-col gap-4 px-5 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
+      <div class="flex items-center gap-2.5 text-[#1A2238]">
+        <img class="h-9 w-9 object-contain" src="assets/AgenturJG_Logo-Initialien.png" alt="" aria-hidden="true">
+        <span class="text-[0.95rem] font-bold">Agentur JG</span>
+      </div>
+      <p class="text-sm text-[#636E89]">© 2026 Agentur JG · Strategisches Online-Marketing aus Katzenelnbogen</p>
+    </div>
+  </footer>
+
+  <!-- ============ PREVIEW SWITCHER (mockup chrome) ============ -->
+  <div class="preview-bar" role="region" aria-label="Vorschau-Auswahl">
+    <label for="service-select">Vorschau</label>
+    <select id="service-select" aria-label="Leistung wählen">
+      <option value="website-erstellen-lassen">Website erstellen lassen</option>
+      <option value="website-optimierung">Website optimieren lassen</option>
+      <option value="seo">SEO für kleine Unternehmen</option>
+      <option value="google-ads">Google Ads für KMU</option>
+      <option value="mehr-anfragen">Mehr Anfragen aus der Website</option>
+      <option value="website-analyse">Website Analyse KMU</option>
+    </select>
+  </div>
+
+  <script src="leistung-data.js"></script>
+  <script src="leistung-app.js"></script>
+</body>
+</html>
+
+

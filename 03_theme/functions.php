@@ -278,139 +278,83 @@ function agentur_jg_prive_accessibility_fallback(): void
 }
 add_action('wp_footer', 'agentur_jg_prive_accessibility_fallback', 101);
 
-function agentur_jg_front_page_schema(): void
+function agentur_jg_local_business_schema(): void
 {
     if (! is_front_page()) {
         return;
     }
 
-    $home_url  = home_url('/');
-    $theme_uri = get_template_directory_uri();
+    $home_url = home_url('/');
 
     $schema = [
         '@context' => 'https://schema.org',
-        '@graph'   => [
+        '@type' => ['LocalBusiness', 'ProfessionalService'],
+        '@id' => $home_url . '#business',
+        'name' => 'Agentur JG',
+        'url' => $home_url,
+        'telephone' => '+491777091573',
+        'description' => 'Webdesign & Online-Marketing für kleine und mittelständische Unternehmen.',
+        'priceRange' => '€€',
+        'areaServed' => [
             [
-                '@type'       => 'WebSite',
-                '@id'         => $home_url . '#website',
-                'url'         => $home_url,
-                'name'        => 'Agentur JG',
-                'description' => 'Websites und Online-Marketing fuer kleine und mittelstaendische Unternehmen.',
-                'inLanguage'  => 'de-DE',
-                'publisher'   => [
-                    '@id' => $home_url . '#business',
+                '@type' => 'AdministrativeArea',
+                'name' => 'Rhein-Lahn-Kreis',
+            ],
+            [
+                '@type' => 'City',
+                'name' => 'Katzenelnbogen',
+            ],
+            [
+                '@type' => 'City',
+                'name' => 'Koblenz',
+            ],
+            [
+                '@type' => 'City',
+                'name' => 'Limburg an der Lahn',
+            ],
+        ],
+        'makesOffer' => [
+            [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'Website-Erstellung',
                 ],
             ],
             [
-                '@type'       => ['LocalBusiness', 'ProfessionalService'],
-                '@id'         => $home_url . '#business',
-                'name'        => 'Agentur JG',
-                'url'         => $home_url,
-                'email'       => 'kontakt@agentur-jg.de',
-                'telephone'   => '+491777091573',
-                'description' => 'Agentur JG entwickelt individuelle Websites fuer KMU, die mehr Anfragen, bessere Sichtbarkeit und passende Bewerbungen bringen.',
-                'slogan'      => 'Websites und Online-Marketing fuer KMU',
-                'priceRange'  => '$$',
-                'image'       => [
-                    $theme_uri . '/assets/images/kopp.jpg',
-                    $theme_uri . '/assets/images/max-kfz.jpg',
-                ],
-                'address'     => [
-                    '@type'           => 'PostalAddress',
-                    'addressLocality' => 'Katzenelnbogen',
-                    'addressRegion'   => 'Rheinland-Pfalz',
-                    'addressCountry'  => 'DE',
-                ],
-                'areaServed'  => [
-                    [
-                        '@type' => 'AdministrativeArea',
-                        'name'  => 'Rhein-Lahn-Kreis',
-                    ],
-                    [
-                        '@type' => 'City',
-                        'name'  => 'Katzenelnbogen',
-                    ],
-                    [
-                        '@type' => 'City',
-                        'name'  => 'Koblenz',
-                    ],
-                    [
-                        '@type' => 'City',
-                        'name'  => 'Limburg an der Lahn',
-                    ],
-                ],
-                'sameAs'      => [
-                    'https://instagram.com/agenturjg',
-                ],
-                'founder'     => [
-                    '@id' => $home_url . '#jona-gravelius',
-                ],
-                'contactPoint' => [
-                    [
-                        '@type'             => 'ContactPoint',
-                        'contactType'       => 'customer service',
-                        'email'             => 'kontakt@agentur-jg.de',
-                        'telephone'         => '+491777091573',
-                        'availableLanguage' => ['de'],
-                    ],
-                ],
-                'makesOffer'  => [
-                    [
-                        '@type' => 'Offer',
-                        'itemOffered' => [
-                            '@type' => 'Service',
-                            'name'  => 'Website-Erstellung fuer KMU',
-                        ],
-                    ],
-                    [
-                        '@type' => 'Offer',
-                        'itemOffered' => [
-                            '@type' => 'Service',
-                            'name'  => 'Website-Optimierung',
-                        ],
-                    ],
-                    [
-                        '@type' => 'Offer',
-                        'itemOffered' => [
-                            '@type' => 'Service',
-                            'name'  => 'SEO und lokale Sichtbarkeit',
-                        ],
-                    ],
-                    [
-                        '@type' => 'Offer',
-                        'itemOffered' => [
-                            '@type' => 'Service',
-                            'name'  => 'Google Ads',
-                        ],
-                    ],
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'Website-Optimierung',
                 ],
             ],
             [
-                '@type'    => 'Person',
-                '@id'      => $home_url . '#jona-gravelius',
-                'name'     => 'Jona Gravelius',
-                'jobTitle' => 'Gruender von Agentur JG',
-                'worksFor' => [
-                    '@id' => $home_url . '#business',
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'SEO und lokale Sichtbarkeit',
                 ],
             ],
             [
-                '@type'      => 'WebPage',
-                '@id'        => $home_url . '#webpage',
-                'url'        => $home_url,
-                'name'       => 'Moderne Websites fuer KMU | Agentur JG',
-                'description' => 'Agentur JG entwickelt individuelle Websites fuer KMU, die mehr Anfragen, bessere Sichtbarkeit und passende Bewerbungen bringen. Kostenloser Website-Check.',
-                'isPartOf'   => [
-                    '@id' => $home_url . '#website',
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'Google Ads',
                 ],
-                'about'      => [
-                    '@id' => $home_url . '#business',
+            ],
+            [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'Conversion-Optimierung für mehr Anfragen',
                 ],
-                'primaryImageOfPage' => [
-                    '@type' => 'ImageObject',
-                    'url'   => $theme_uri . '/assets/images/kopp.jpg',
+            ],
+            [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'Website-Analyse und Tracking',
                 ],
-                'inLanguage' => 'de-DE',
             ],
         ],
     ];
@@ -420,7 +364,7 @@ function agentur_jg_front_page_schema(): void
         wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
     );
 }
-add_action('wp_head', 'agentur_jg_front_page_schema', 30);
+add_action('wp_head', 'agentur_jg_local_business_schema', 30);
 
 function agentur_jg_disable_rank_math_front_page_schema(array $data): array
 {
@@ -478,10 +422,16 @@ function agentur_jg_private_asset_request_is_allowed(): bool
 
     $referer_host = parse_url((string) $_SERVER['HTTP_REFERER'], PHP_URL_HOST);
     $site_host = parse_url(home_url('/'), PHP_URL_HOST);
+    $request_host = parse_url('//' . (string) ($_SERVER['HTTP_HOST'] ?? ''), PHP_URL_HOST);
 
-    return is_string($referer_host)
-        && is_string($site_host)
-        && strtolower($referer_host) === strtolower($site_host);
+    if (! is_string($referer_host)) {
+        return false;
+    }
+
+    $allowed_hosts = array_filter([$site_host, $request_host], 'is_string');
+    $allowed_hosts = array_map('strtolower', $allowed_hosts);
+
+    return in_array(strtolower($referer_host), $allowed_hosts, true);
 }
 
 function agentur_jg_private_asset_response(): void
@@ -636,3 +586,87 @@ add_filter('rank_math/frontend/description', function (string $description): str
     $config = agentur_jg_seo_config();
     return $config['description'] ?? $description;
 });
+
+function agentur_jg_faq_schema(): void
+{
+    if (! is_singular()) {
+        return;
+    }
+
+    $config = agentur_jg_seo_config();
+
+    if (empty($config['faq']) || ! is_array($config['faq'])) {
+        return;
+    }
+
+    $questions = [];
+
+    foreach ($config['faq'] as $faq) {
+        if (empty($faq['q']) || empty($faq['a'])) {
+            continue;
+        }
+
+        $questions[] = [
+            '@type' => 'Question',
+            'name' => wp_strip_all_tags((string) $faq['q']),
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => wp_strip_all_tags((string) $faq['a']),
+            ],
+        ];
+    }
+
+    if ($questions === []) {
+        return;
+    }
+
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => $questions,
+    ];
+
+    printf(
+        '<script type="application/ld+json">%s</script>' . "\n",
+        wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+    );
+}
+add_action('wp_head', 'agentur_jg_faq_schema', 31);
+
+function agentur_jg_google_fonts(): void
+{
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <?php
+}
+add_action('wp_head', 'agentur_jg_google_fonts', 2);
+
+function agentur_jg_leistung_page_assets(): void
+{
+    if (! is_page_template('page-leistung.php')) {
+        return;
+    }
+
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+    $js_path   = $theme_dir . '/assets/js/leistung-page.js';
+
+    wp_enqueue_script(
+        'agentur-jg-gsap',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        [],
+        '3.12.5',
+        true
+    );
+
+    wp_enqueue_script(
+        'agentur-jg-leistung-page',
+        $theme_uri . '/assets/js/leistung-page.js',
+        ['agentur-jg-gsap'],
+        file_exists($js_path) ? (string) filemtime($js_path) : '1.0.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'agentur_jg_leistung_page_assets');

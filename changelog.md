@@ -1,5 +1,48 @@
 # Changelog
 
+## 12.06.2026 – Onepager → Multi-Page-Website + Stufe 4 abgeschlossen
+
+### Website-Architektur: Onepager aufgelöst
+- Startseite ist weiterhin Einstiegspunkt, aber alle Hauptbereiche sind jetzt eigenständige Unterseiten
+- Header (`header.php`) mit echter Navigation zu `/leistungen/`, `/ablauf/`, `/referenzen/`, `/ueber-mich/`
+- `front-page.php` überarbeitet: Leistungsübersicht verlinkt zu Einzelseiten statt Onepager-Ankern
+
+### 5 neue Page-Templates
+- `page-leistungen.php` – Leistungsübersicht (Hub mit Link zu allen 6 Einzelseiten)
+- `page-leistung.php` – Generisches Template für alle 6 Leistungseinzelseiten (ein Template, alle Daten im PHP-Array)
+- `page-referenzen.php` – Referenzprojekte mit Fallstudien (KOPP Umwelt, Max KFZ)
+- `page-ueber-mich.php` – Über Mich
+- `page-ablauf.php` – Ablauf der Zusammenarbeit (4 Schritte)
+
+### 6 Leistungseinzelseiten (alle via page-leistung.php)
+- `/website-erstellen-lassen/` – Website-Erstellung für KMU
+- `/website-optimierung/` – Optimierung bestehender Websites
+- `/seo/` – SEO & lokale Sichtbarkeit
+- `/google-ads/` – Google Ads Betreuung
+- `/mehr-anfragen/` – Conversion-Optimierung
+- `/website-analyse/` – Tracking & Auswertung
+
+### SEO-JSON für alle neuen Seiten (10 neue Dateien)
+- Alle 6 Leistungsseiten + `/ablauf/` + `/referenzen/` + `/ueber-mich/` + `/leistungen/` mit eigenen JSON-Dateien
+- 9 von 10 Dateien enthalten `faq`-Array → automatisch als FAQPage JSON-LD gerendert
+- `seo/leistungen.json` ohne FAQ (Hub-Seite, keine Kaufentscheidungs-FAQs)
+
+### Neue functions.php Features
+- `agentur_jg_faq_schema()` – Liest `faq`-Array aus SEO-JSON, rendert FAQPage JSON-LD in `<head>` (Hook: `wp_head` Priority 31). Kein pro-Seiten-Code nötig.
+- `agentur_jg_leistung_page_assets()` – Lädt GSAP 3.12.5 + `leistung-page.js` nur auf `page-leistung.php`-Templates (conditional enqueue)
+
+### JavaScript
+- `assets/js/leistung-page.js` – FAQ-Accordion (Einzelöffnung, aria-expanded) + GSAP-Scroll-Animationen für Leistungsseiten
+- `leistung-app.js` – Standalone Prototyping-Tool: rendert alle 6 Leistungsseiten im Browser (ohne WordPress) aus `window.LEISTUNGEN`; wurde genutzt, um Template-Markup zu entwickeln
+
+### Design-Artefakt
+- `Leistungsseiten Redesign.html` – HTML-Prototyp der Leistungsseiten (Ausgangspunkt für `page-leistung.php`)
+
+### Tailwind
+- `tailwind.config.js` – Content-Pfad um `./assets/js/**/*.js` erweitert (Klassen in `leistung-page.js` werden nun beim Build erfasst)
+
+---
+
 ## 11.06.2026 – Stufe 1 abgeschlossen
 
 ### HTTP→HTTPS-Redirect

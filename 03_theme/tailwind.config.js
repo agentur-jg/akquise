@@ -2,16 +2,28 @@
 module.exports = {
   content: [
     './*.php',
-    './src/js/**/*.js'
+    './src/js/**/*.js',
+    './assets/js/**/*.js'
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          'Inter',
+        display: [
+          "'Hanken Grotesk'",
           'ui-sans-serif',
           'system-ui',
           'sans-serif'
+        ],
+        sans: [
+          "'Inter'",
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif'
+        ],
+        mono: [
+          "'IBM Plex Mono'",
+          'ui-monospace',
+          'monospace'
         ]
       }
     }
@@ -20,4 +32,3 @@ module.exports = {
     require('@tailwindcss/typography')
   ]
 };
-

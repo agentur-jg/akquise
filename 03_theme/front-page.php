@@ -1,5 +1,84 @@
 <?php
-$jona_private_portrait_url = home_url('/agentur-jg-private/jona-portrait/');
+$leistungen = [
+    [
+        'slug' => 'website-erstellen-lassen',
+        'title' => 'Website-Erstellung',
+        'description' => 'Eine Website, die Ihr Angebot klar macht, Vertrauen aufbaut und Anfragen vorbereitet.',
+        'fit' => 'Sie noch keine professionelle Website haben oder neu starten möchten.',
+        'icon' => 'website',
+    ],
+    [
+        'slug' => 'website-optimierung',
+        'title' => 'Website-Optimierung',
+        'description' => 'Bestehende Seiten gezielt verbessern, damit Struktur, Inhalte und Wirkung wieder passen.',
+        'fit' => 'Ihre Website vorhanden ist, aber nicht genug Anfragen oder Vertrauen erzeugt.',
+        'icon' => 'optimize',
+    ],
+    [
+        'slug' => 'seo',
+        'title' => 'SEO & lokale Sichtbarkeit',
+        'description' => 'Gefunden werden, wenn Menschen in Ihrer Region aktiv nach Ihren Leistungen suchen.',
+        'fit' => 'Ihre Konkurrenz bei Google sichtbarer ist als Sie.',
+        'icon' => 'search',
+    ],
+    [
+        'slug' => 'google-ads',
+        'title' => 'Google Ads',
+        'description' => 'Gezielte Kampagnen für schnelle Sichtbarkeit, klare Suchintention und messbare Ergebnisse.',
+        'fit' => 'Sie schneller passende Besucher auf wichtige Angebotsseiten bringen möchten.',
+        'icon' => 'ads',
+    ],
+    [
+        'slug' => 'mehr-anfragen',
+        'title' => 'Mehr Anfragen',
+        'description' => 'Aus Besuchern passende Kontakte machen - mit besseren Botschaften und klaren Wegen.',
+        'fit' => 'genug Besucher kommen, aber zu wenige davon Kontakt aufnehmen.',
+        'icon' => 'conversion',
+    ],
+    [
+        'slug' => 'website-analyse',
+        'title' => 'Tracking & Auswertung',
+        'description' => 'Verstehen, was funktioniert, wo Nutzer abspringen und welcher Schritt als nächstes zählt.',
+        'fit' => 'Sie Entscheidungen nicht länger aus dem Bauchgefühl treffen wollen.',
+        'icon' => 'tracking',
+    ],
+];
+
+$orientierung = [
+    [
+        'label' => 'Referenzen',
+        'description' => 'Einblicke in echte Projekte und was daraus entstanden ist.',
+        'url' => home_url('/referenzen/'),
+    ],
+    [
+        'label' => 'Über mich',
+        'description' => 'Wer hinter Agentur JG steht und wie die Zusammenarbeit gedacht ist.',
+        'url' => home_url('/ueber-mich/'),
+    ],
+    [
+        'label' => 'Ablauf',
+        'description' => 'Vom ersten Gespräch bis zur laufenden Verbesserung.',
+        'url' => home_url('/ablauf/'),
+    ],
+];
+
+if (! function_exists('agentur_jg_front_page_icon')) {
+    function agentur_jg_front_page_icon(string $icon): void
+    {
+        $icons = [
+            'website' => '<rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 9h18"></path><path d="M7 15h5"></path>',
+            'optimize' => '<path d="M4 19V5"></path><path d="M4 15h8"></path><path d="M12 15a4 4 0 1 0 0-8H4"></path><path d="m17 16 3 3"></path>',
+            'search' => '<circle cx="10.5" cy="10.5" r="5.5"></circle><path d="m15 15 5 5"></path><path d="M8 10.5h5"></path>',
+            'ads' => '<path d="M4 19 11 5h2l7 14"></path><path d="M7.5 14h9"></path><path d="M9 19h6"></path>',
+            'conversion' => '<path d="M4 7h9"></path><path d="m10 4 3 3-3 3"></path><path d="M20 17h-9"></path><path d="m14 14-3 3 3 3"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="7" r="2"></circle>',
+            'tracking' => '<path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M8 15v-4"></path><path d="M12 15V8"></path><path d="M16 15v-6"></path>',
+        ];
+
+        echo '<svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+        echo $icons[$icon] ?? $icons['website'];
+        echo '</svg>';
+    }
+}
 
 get_header();
 ?>
@@ -18,14 +97,14 @@ get_header();
             </h1>
 
             <p class="mt-7 max-w-2xl text-[clamp(1.06rem,1.5vw,1.24rem)] leading-8 text-[#51607C]">
-                <?php esc_html_e('Agentur JG hilft kleinen und mittelständischen Unternehmen dabei, online sichtbar zu werden, die richtigen Menschen auf ihre Website zu bringen und daraus messbar mehr Anfragen, Bewerbungen oder Umsatz zu gewinnen.', 'agentur-jg-theme'); ?>
+                <?php esc_html_e('Ich bin Jona - ich helfe kleinen und mittelständischen Unternehmen dabei, online sichtbar zu werden, die richtigen Menschen auf ihre Website zu bringen und daraus messbar mehr Anfragen, Bewerbungen oder Umsatz zu gewinnen.', 'agentur-jg-theme'); ?>
             </p>
 
             <div class="mt-10 flex flex-wrap gap-4">
                 <a class="inline-flex items-center justify-center rounded-[10px] bg-[#1A2238] px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
                     <?php esc_html_e('Unverbindlich anfragen', 'agentur-jg-theme'); ?>
                 </a>
-                <a class="inline-flex items-center justify-center rounded-[10px] border border-[rgba(26,34,56,0.16)] bg-white/70 px-6 py-4 text-base font-semibold text-[#1A2238] transition hover:border-[#1A2238] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="#referenzen">
+                <a class="inline-flex items-center justify-center rounded-[10px] border border-[rgba(26,34,56,0.16)] bg-white/70 px-6 py-4 text-base font-semibold text-[#1A2238] transition hover:border-[#1A2238] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/referenzen/')); ?>">
                     <?php esc_html_e('Referenzen ansehen', 'agentur-jg-theme'); ?>
                 </a>
             </div>
@@ -127,860 +206,122 @@ get_header();
     </div>
 </section>
 
-<section id="problem" class="bg-white">
-    <div class="mx-auto max-w-[1200px] px-5 pb-20 pt-16 sm:px-8 lg:px-10 lg:pb-28 lg:pt-20">
-        <div class="max-w-4xl">
+<section class="bg-white">
+    <div class="mx-auto grid max-w-[1200px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-24">
+        <div>
             <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#3D5A80] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#4E6E97]">
-                <?php esc_html_e('Typische Ausgangslagen', 'agentur-jg-theme'); ?>
+                <?php esc_html_e('Ausgangspunkt', 'agentur-jg-theme'); ?>
             </p>
             <h2 class="text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.06] tracking-[-0.03em] text-[#1A2238]">
                 <?php esc_html_e('Gute Arbeit allein reicht online nicht aus.', 'agentur-jg-theme'); ?>
             </h2>
-            <p class="mt-6 max-w-3xl text-lg leading-8 text-[#51607C]">
-                <?php esc_html_e('Ob Handwerksbetrieb, Dienstleister oder lokaler Anbieter: Wer online nicht klar sichtbar und verständlich ist, wird von potenziellen Kunden oft zu spät oder gar nicht gefunden.', 'agentur-jg-theme'); ?>
-            </p>
         </div>
 
-        <div class="mt-14 overflow-hidden rounded-[22px] border border-[rgba(26,34,56,0.10)] bg-[#F6F8FA]">
-            <div class="flex flex-col gap-5 border-b border-[rgba(26,34,56,0.10)] bg-white/70 px-5 py-5 sm:px-7 lg:flex-row lg:items-center lg:justify-between">
-                <div>
-                    <p class="text-xs font-medium uppercase tracking-[0.16em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">
-                        <?php esc_html_e('Woran es häufig scheitert', 'agentur-jg-theme'); ?>
-                    </p>
-                    <p class="mt-2 text-sm leading-6 text-[#51607C]">
-                        <?php esc_html_e('Die Ausgangslagen sind unterschiedlich, aber die Ursachen liegen oft in Sichtbarkeit, Vertrauen und Messbarkeit.', 'agentur-jg-theme'); ?>
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full border border-[rgba(26,34,56,0.10)] bg-white px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Sichtbarkeit', 'agentur-jg-theme'); ?></span>
-                    <span class="rounded-full border border-[rgba(26,34,56,0.10)] bg-white px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Anfragen', 'agentur-jg-theme'); ?></span>
-                    <span class="rounded-full border border-[rgba(26,34,56,0.10)] bg-white px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Messung', 'agentur-jg-theme'); ?></span>
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-2">
-                <div class="border-b border-[rgba(26,34,56,0.10)] bg-white/40 px-5 py-7 sm:px-7 lg:border-r">
-                    <div class="grid gap-4 sm:grid-cols-[56px_1fr]">
-                        <span class="text-sm font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">01</span>
-                        <div>
-                            <span class="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Auftritt', 'agentur-jg-theme'); ?></span>
-                            <h3 class="text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Keine professionelle Website', 'agentur-jg-theme'); ?></h3>
-                            <p class="mt-2 text-base leading-7 text-[#51607C]"><?php esc_html_e('Ihr Unternehmen ist gut, aber online kaum greifbar.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-b border-[rgba(26,34,56,0.10)] bg-white px-5 py-7 sm:px-7">
-                    <div class="grid gap-4 sm:grid-cols-[56px_1fr]">
-                        <span class="text-sm font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">02</span>
-                        <div>
-                            <span class="mb-3 inline-flex rounded-full bg-[#EDEFF3] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Anfragen', 'agentur-jg-theme'); ?></span>
-                            <h3 class="text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Keine Anfragen', 'agentur-jg-theme'); ?></h3>
-                            <p class="mt-2 text-base leading-7 text-[#51607C]"><?php esc_html_e('Die Website ist vorhanden, aber Sie wissen nicht, ob sie wirklich arbeitet.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-b border-[rgba(26,34,56,0.10)] bg-white px-5 py-7 sm:px-7 lg:border-r">
-                    <div class="grid gap-4 sm:grid-cols-[56px_1fr]">
-                        <span class="text-sm font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">03</span>
-                        <div>
-                            <span class="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Google', 'agentur-jg-theme'); ?></span>
-                            <h3 class="text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Keine Google-Sichtbarkeit', 'agentur-jg-theme'); ?></h3>
-                            <p class="mt-2 text-base leading-7 text-[#51607C]"><?php esc_html_e('Potenzielle Kunden sehen zuerst Ihre Konkurrenz.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-b border-[rgba(26,34,56,0.10)] bg-white/40 px-5 py-7 sm:px-7">
-                    <div class="grid gap-4 sm:grid-cols-[56px_1fr]">
-                        <span class="text-sm font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">04</span>
-                        <div>
-                            <span class="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Qualität', 'agentur-jg-theme'); ?></span>
-                            <h3 class="text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Falsche Anfragen', 'agentur-jg-theme'); ?></h3>
-                            <p class="mt-2 text-base leading-7 text-[#51607C]"><?php esc_html_e('Zu weit weg, zu preissensibel oder nicht passend zu Ihrem Angebot.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-b border-[rgba(26,34,56,0.10)] bg-white/40 px-5 py-7 sm:px-7 lg:border-b-0 lg:border-r">
-                    <div class="grid gap-4 sm:grid-cols-[56px_1fr]">
-                        <span class="text-sm font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">05</span>
-                        <div>
-                            <span class="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Recruiting', 'agentur-jg-theme'); ?></span>
-                            <h3 class="text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Zu wenige Bewerbungen', 'agentur-jg-theme'); ?></h3>
-                            <p class="mt-2 text-base leading-7 text-[#51607C]"><?php esc_html_e('Ihr Unternehmen wird online nicht als attraktiver Arbeitgeber sichtbar.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white px-5 py-7 sm:px-7">
-                    <div class="grid gap-4 sm:grid-cols-[56px_1fr]">
-                        <span class="text-sm font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">06</span>
-                        <div>
-                            <span class="mb-3 inline-flex rounded-full bg-[#EDEFF3] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Tracking', 'agentur-jg-theme'); ?></span>
-                            <h3 class="text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Keine klaren Zahlen', 'agentur-jg-theme'); ?></h3>
-                            <p class="mt-2 text-base leading-7 text-[#51607C]"><?php esc_html_e('Keine belastbaren Werte zu Besuchern, Klicks, Anfragen oder Bewerbungen.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-10 grid gap-6 border-l-4 border-[#3D5A80] bg-[#F6F8FA] py-6 pl-6 pr-5 sm:pl-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <p class="max-w-4xl text-lg leading-8 text-[#51607C]">
-                <?php esc_html_e('Genau hier setzt Agentur JG an: Ich betrachte Ihre Website nicht als schönes Einzelprojekt, sondern als zentralen Ort, an dem aus Aufmerksamkeit Vertrauen und aus Vertrauen Handlung wird.', 'agentur-jg-theme'); ?>
+        <div class="text-lg leading-8 text-[#51607C]">
+            <p>
+                <?php esc_html_e('Viele Unternehmen haben ein starkes Angebot, werden online aber zu spät gefunden, nicht klar genug verstanden oder verlieren passende Interessenten auf dem Weg zur Anfrage.', 'agentur-jg-theme'); ?>
             </p>
-            <a class="inline-flex items-center justify-center rounded-[10px] bg-[#1A2238] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
-                <?php esc_html_e('Mein Anliegen schildern', 'agentur-jg-theme'); ?>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="perspektive" class="relative isolate overflow-hidden bg-[#1A2238] text-white">
-    <div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:34px_34px] [mask-image:radial-gradient(circle_at_72%_45%,#000,transparent_74%)]"></div>
-    <div class="absolute inset-x-0 top-0 h-px bg-white/10"></div>
-    <div class="absolute inset-x-0 bottom-0 h-px bg-white/10"></div>
-
-    <div class="mx-auto grid max-w-[1200px] gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10 lg:py-28">
-        <div class="max-w-2xl">
-            <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#AEBAD2] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#AEBAD2]">
-                <?php esc_html_e('Website als Mittelpunkt', 'agentur-jg-theme'); ?>
+            <p class="mt-4">
+                <?php esc_html_e('Agentur JG verbindet Website, Sichtbarkeit, Kampagnen und Auswertung zu einem System, das zu Ihrer Ausgangslage passt und messbar besser werden kann.', 'agentur-jg-theme'); ?>
             </p>
-
-            <h2 class="text-[clamp(2.25rem,4.8vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-white">
-                <?php esc_html_e('Alle Wege führen zur Website, aber nur eine gute Website führt zur Anfrage.', 'agentur-jg-theme'); ?>
-            </h2>
-
-            <p class="mt-7 text-lg leading-8 text-[#D7DEEA]">
-                <?php esc_html_e('Google, Empfehlungen, Anzeigen, Social Media und persönliche Gespräche erzeugen Aufmerksamkeit. Entscheidend ist, was danach passiert: Versteht der Besucher Ihr Angebot? Entsteht Vertrauen? Wird der nächste Schritt klar?', 'agentur-jg-theme'); ?>
-            </p>
-        </div>
-
-        <div class="relative">
-            <div class="absolute -inset-6 -z-10 rounded-[28px] bg-[#3D5A80]/20 blur-2xl"></div>
-
-            <div class="overflow-hidden rounded-[18px] border border-white/12 bg-white/[0.06] shadow-[0_24px_70px_rgba(0,0,0,0.28)] backdrop-blur">
-                <div class="border-b border-white/10 bg-white/[0.05] px-5 py-4">
-                    <p class="text-xs font-medium uppercase tracking-[0.16em] text-[#AEBAD2] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">
-                        <?php esc_html_e('Der Weg zur Anfrage', 'agentur-jg-theme'); ?>
-                    </p>
-                </div>
-
-                <div class="p-5 sm:p-7">
-                    <div class="grid gap-3 sm:grid-cols-5">
-                        <div class="rounded-[10px] border border-white/10 bg-white/[0.07] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#D7DEEA] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Google', 'agentur-jg-theme'); ?></div>
-                        <div class="rounded-[10px] border border-white/10 bg-white/[0.07] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#D7DEEA] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Empfehlung', 'agentur-jg-theme'); ?></div>
-                        <div class="rounded-[10px] border border-white/10 bg-white/[0.07] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#D7DEEA] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Ads', 'agentur-jg-theme'); ?></div>
-                        <div class="rounded-[10px] border border-white/10 bg-white/[0.07] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#D7DEEA] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Social', 'agentur-jg-theme'); ?></div>
-                        <div class="rounded-[10px] border border-white/10 bg-white/[0.07] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-[#D7DEEA] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Regional', 'agentur-jg-theme'); ?></div>
-                    </div>
-
-                    <div class="relative my-5 h-14">
-                        <div class="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#98C1D9]/55"></div>
-                        <div class="absolute left-[10%] top-0 h-full w-px bg-white/15"></div>
-                        <div class="absolute left-[30%] top-0 h-full w-px bg-white/15"></div>
-                        <div class="absolute left-[70%] top-0 h-full w-px bg-white/15"></div>
-                        <div class="absolute left-[90%] top-0 h-full w-px bg-white/15"></div>
-                        <div class="absolute bottom-0 left-1/2 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full border border-[#98C1D9]/50 bg-[#1A2238] text-[#98C1D9]">
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M12 5v14"></path>
-                                <path d="m19 12-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="overflow-hidden rounded-[16px] border border-white/14 bg-[#F6F8FA] text-[#1A2238] shadow-[0_18px_45px_rgba(0,0,0,0.22)]">
-                        <div class="flex h-11 items-center gap-2 border-b border-[rgba(26,34,56,0.10)] bg-white px-4">
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="ml-auto rounded-md border border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] px-3 py-1 text-[0.68rem] text-[#51607C] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">
-                                <?php esc_html_e('ihre-website.de', 'agentur-jg-theme'); ?>
-                            </span>
-                        </div>
-
-                        <div class="grid gap-5 p-5 sm:grid-cols-[1fr_0.95fr] sm:p-6">
-                            <div>
-                                <p class="text-xs font-medium uppercase tracking-[0.16em] text-[#3D5A80] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">
-                                    <?php esc_html_e('Ihre Website', 'agentur-jg-theme'); ?>
-                                </p>
-                                <p class="mt-3 text-2xl font-bold leading-tight tracking-[-0.02em] text-[#1A2238]">
-                                    <?php esc_html_e('Verstehen. Vertrauen. Handeln.', 'agentur-jg-theme'); ?>
-                                </p>
-                                <p class="mt-3 text-sm leading-6 text-[#51607C]">
-                                    <?php esc_html_e('Der zentrale Ort, an dem aus Aufmerksamkeit eine konkrete Entscheidung wird.', 'agentur-jg-theme'); ?>
-                                </p>
-                            </div>
-
-                            <div class="grid gap-3">
-                                <div class="rounded-[10px] border border-[rgba(26,34,56,0.10)] bg-white px-4 py-3">
-                                    <div class="text-sm font-semibold text-[#1A2238]"><?php esc_html_e('Angebot klar erklärt', 'agentur-jg-theme'); ?></div>
-                                    <div class="mt-1 h-1.5 overflow-hidden rounded-full bg-[#EDEFF3]"><span class="block h-full w-[84%] rounded-full bg-[#3D5A80]"></span></div>
-                                </div>
-                                <div class="rounded-[10px] border border-[rgba(26,34,56,0.10)] bg-white px-4 py-3">
-                                    <div class="text-sm font-semibold text-[#1A2238]"><?php esc_html_e('Vertrauen aufgebaut', 'agentur-jg-theme'); ?></div>
-                                    <div class="mt-1 h-1.5 overflow-hidden rounded-full bg-[#EDEFF3]"><span class="block h-full w-[72%] rounded-full bg-[#4E6E97]"></span></div>
-                                </div>
-                                <div class="rounded-[10px] border border-[rgba(26,34,56,0.10)] bg-white px-4 py-3">
-                                    <div class="text-sm font-semibold text-[#1A2238]"><?php esc_html_e('Nächster Schritt sichtbar', 'agentur-jg-theme'); ?></div>
-                                    <div class="mt-1 h-1.5 overflow-hidden rounded-full bg-[#EDEFF3]"><span class="block h-full w-[91%] rounded-full bg-[#98C1D9]"></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative my-5 h-12">
-                        <div class="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#98C1D9]/55"></div>
-                        <div class="absolute top-1/2 left-[17%] h-px w-[66%] -translate-y-1/2 bg-white/15"></div>
-                        <div class="absolute top-1/2 left-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#98C1D9]/50 bg-[#1A2238] text-[#98C1D9]">
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M12 5v14"></path>
-                                <path d="m19 12-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="grid gap-3 sm:grid-cols-3">
-                        <div class="rounded-[12px] border border-[#98C1D9]/25 bg-[#98C1D9]/12 px-4 py-4">
-                            <p class="text-xs font-medium uppercase tracking-[0.14em] text-[#AEBAD2] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Ergebnis', 'agentur-jg-theme'); ?></p>
-                            <p class="mt-2 text-xl font-bold tracking-[-0.02em] text-white"><?php esc_html_e('Anfrage', 'agentur-jg-theme'); ?></p>
-                        </div>
-                        <div class="rounded-[12px] border border-[#98C1D9]/25 bg-[#98C1D9]/12 px-4 py-4">
-                            <p class="text-xs font-medium uppercase tracking-[0.14em] text-[#AEBAD2] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Ergebnis', 'agentur-jg-theme'); ?></p>
-                            <p class="mt-2 text-xl font-bold tracking-[-0.02em] text-white"><?php esc_html_e('Bewerbung', 'agentur-jg-theme'); ?></p>
-                        </div>
-                        <div class="rounded-[12px] border border-[#98C1D9]/25 bg-[#98C1D9]/12 px-4 py-4">
-                            <p class="text-xs font-medium uppercase tracking-[0.14em] text-[#AEBAD2] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Ergebnis', 'agentur-jg-theme'); ?></p>
-                            <p class="mt-2 text-xl font-bold tracking-[-0.02em] text-white"><?php esc_html_e('Umsatz', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                <div class="border-l border-white/18 pl-4">
-                    <p class="text-sm text-[#AEBAD2]"><?php esc_html_e('Nicht nur online sein', 'agentur-jg-theme'); ?></p>
-                    <p class="mt-1 font-semibold text-white"><?php esc_html_e('gefunden werden', 'agentur-jg-theme'); ?></p>
-                </div>
-                <div class="border-l border-white/18 pl-4">
-                    <p class="text-sm text-[#AEBAD2]"><?php esc_html_e('Nicht nur gut aussehen', 'agentur-jg-theme'); ?></p>
-                    <p class="mt-1 font-semibold text-white"><?php esc_html_e('Vertrauen aufbauen', 'agentur-jg-theme'); ?></p>
-                </div>
-                <div class="border-l border-white/18 pl-4">
-                    <p class="text-sm text-[#AEBAD2]"><?php esc_html_e('Nicht nur Besucher sammeln', 'agentur-jg-theme'); ?></p>
-                    <p class="mt-1 font-semibold text-white"><?php esc_html_e('Handlungen auslösen', 'agentur-jg-theme'); ?></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="leistungen" class="bg-white">
-    <div class="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
-        <div class="mx-auto max-w-3xl text-center">
-            <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#3D5A80] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#4E6E97]">
-                <?php esc_html_e('Leistungen', 'agentur-jg-theme'); ?>
-            </p>
-
-            <h2 class="text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.06] tracking-[-0.03em] text-[#1A2238]">
-                <?php esc_html_e('Die passenden Bausteine für Ihren nächsten Schritt.', 'agentur-jg-theme'); ?>
-            </h2>
-
-            <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#51607C]">
-                <?php esc_html_e('Nicht jedes Unternehmen braucht dieselben Maßnahmen. Entscheidend ist, wo Sie gerade stehen, was Ihre Website leisten soll und welcher Schritt wirtschaftlich sinnvoll ist.', 'agentur-jg-theme'); ?>
-            </p>
-        </div>
-
-        <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            <article class="group rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[rgba(61,90,128,0.28)] hover:shadow-[0_18px_45px_rgba(20,26,43,0.10)]">
-                <div class="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#F6F8FA] text-[#3D5A80] ring-1 ring-[rgba(26,34,56,0.08)]">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                        <path d="M3 9h18"></path>
-                        <path d="M7 7h.01"></path>
-                    </svg>
-                </div>
-                <h3 class="mt-5 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Website-Erstellung', 'agentur-jg-theme'); ?></h3>
-                <p class="mt-3 text-base leading-7 text-[#51607C]">
-                    <?php esc_html_e('Für Unternehmen, die noch keine professionelle Website haben oder eine neue digitale Grundlage brauchen.', 'agentur-jg-theme'); ?>
+            <div class="mt-8 rounded-[14px] border border-[rgba(61,90,128,0.18)] bg-[#F6F8FA] p-5">
+                <p class="text-base font-semibold leading-7 text-[#1A2238]">
+                    <?php esc_html_e('Der schnellste Einstieg: schauen Sie, welche Leistung gerade zu Ihrem nächsten Engpass passt.', 'agentur-jg-theme'); ?>
                 </p>
-                <p class="mt-5 border-t border-[rgba(26,34,56,0.10)] pt-4 text-sm leading-6 text-[#636E89]">
-                    <span class="font-semibold text-[#1A2238]"><?php esc_html_e('Sinnvoll, wenn:', 'agentur-jg-theme'); ?></span>
-                    <?php esc_html_e(' online noch kein klarer, vertrauenswürdiger Unternehmensauftritt existiert.', 'agentur-jg-theme'); ?>
-                </p>
-            </article>
-
-            <article class="group rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[rgba(61,90,128,0.28)] hover:shadow-[0_18px_45px_rgba(20,26,43,0.10)]">
-                <div class="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#F6F8FA] text-[#3D5A80] ring-1 ring-[rgba(26,34,56,0.08)]">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 21v-7"></path>
-                        <path d="M4 10V3"></path>
-                        <path d="M12 21v-9"></path>
-                        <path d="M12 8V3"></path>
-                        <path d="M20 21v-5"></path>
-                        <path d="M20 12V3"></path>
-                        <path d="M2 14h4"></path>
-                        <path d="M10 8h4"></path>
-                        <path d="M18 16h4"></path>
-                    </svg>
-                </div>
-                <h3 class="mt-5 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Website-Optimierung', 'agentur-jg-theme'); ?></h3>
-                <p class="mt-3 text-base leading-7 text-[#51607C]">
-                    <?php esc_html_e('Für bestehende Websites, die schöner aussehen als sie funktionieren oder kaum Anfragen bringen.', 'agentur-jg-theme'); ?>
-                </p>
-                <p class="mt-5 border-t border-[rgba(26,34,56,0.10)] pt-4 text-sm leading-6 text-[#636E89]">
-                    <span class="font-semibold text-[#1A2238]"><?php esc_html_e('Sinnvoll, wenn:', 'agentur-jg-theme'); ?></span>
-                    <?php esc_html_e(' Ihre Seite vorhanden ist, aber zu wenig daraus entsteht.', 'agentur-jg-theme'); ?>
-                </p>
-            </article>
-
-            <article class="group rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[rgba(61,90,128,0.28)] hover:shadow-[0_18px_45px_rgba(20,26,43,0.10)]">
-                <div class="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#F6F8FA] text-[#3D5A80] ring-1 ring-[rgba(26,34,56,0.08)]">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="11" cy="11" r="7"></circle>
-                        <path d="m20 20-3.5-3.5"></path>
-                    </svg>
-                </div>
-                <h3 class="mt-5 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('SEO & lokale Sichtbarkeit', 'agentur-jg-theme'); ?></h3>
-                <p class="mt-3 text-base leading-7 text-[#51607C]">
-                    <?php esc_html_e('Damit potenzielle Kunden Ihr Unternehmen finden, wenn sie bei Google nach Ihrer Leistung suchen.', 'agentur-jg-theme'); ?>
-                </p>
-                <p class="mt-5 border-t border-[rgba(26,34,56,0.10)] pt-4 text-sm leading-6 text-[#636E89]">
-                    <span class="font-semibold text-[#1A2238]"><?php esc_html_e('Sinnvoll, wenn:', 'agentur-jg-theme'); ?></span>
-                    <?php esc_html_e(' Ihre Konkurrenz online sichtbarer ist als Sie.', 'agentur-jg-theme'); ?>
-                </p>
-            </article>
-
-            <article class="group rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[rgba(61,90,128,0.28)] hover:shadow-[0_18px_45px_rgba(20,26,43,0.10)]">
-                <div class="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#F6F8FA] text-[#3D5A80] ring-1 ring-[rgba(26,34,56,0.08)]">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <circle cx="12" cy="12" r="1.5"></circle>
-                    </svg>
-                </div>
-                <h3 class="mt-5 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Google Ads', 'agentur-jg-theme'); ?></h3>
-                <p class="mt-3 text-base leading-7 text-[#51607C]">
-                    <?php esc_html_e('Für gezielte Besucher, die bereits Interesse oder konkreten Bedarf haben.', 'agentur-jg-theme'); ?>
-                </p>
-                <p class="mt-5 border-t border-[rgba(26,34,56,0.10)] pt-4 text-sm leading-6 text-[#636E89]">
-                    <span class="font-semibold text-[#1A2238]"><?php esc_html_e('Sinnvoll, wenn:', 'agentur-jg-theme'); ?></span>
-                    <?php esc_html_e(' kurzfristig passende Anfragen entstehen sollen.', 'agentur-jg-theme'); ?>
-                </p>
-            </article>
-
-            <article class="group rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[rgba(61,90,128,0.28)] hover:shadow-[0_18px_45px_rgba(20,26,43,0.10)]">
-                <div class="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#F6F8FA] text-[#3D5A80] ring-1 ring-[rgba(26,34,56,0.08)]">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 18h16"></path>
-                        <path d="M6 15l4-4 3 3 5-7"></path>
-                        <path d="M15 7h3v3"></path>
-                    </svg>
-                </div>
-                <h3 class="mt-5 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Mehr Anfragen aus vorhandenen Besuchern', 'agentur-jg-theme'); ?></h3>
-                <p class="mt-3 text-base leading-7 text-[#51607C]">
-                    <?php esc_html_e('Damit aus Besuchern mehr Anfragen, Bewerbungen oder Kontakte werden.', 'agentur-jg-theme'); ?>
-                </p>
-                <p class="mt-5 border-t border-[rgba(26,34,56,0.10)] pt-4 text-sm leading-6 text-[#636E89]">
-                    <span class="font-semibold text-[#1A2238]"><?php esc_html_e('Sinnvoll, wenn:', 'agentur-jg-theme'); ?></span>
-                    <?php esc_html_e(' Besucher vorhanden sind, aber zu selten handeln.', 'agentur-jg-theme'); ?>
-                </p>
-            </article>
-
-            <article class="group rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[rgba(61,90,128,0.28)] hover:shadow-[0_18px_45px_rgba(20,26,43,0.10)]">
-                <div class="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#F6F8FA] text-[#3D5A80] ring-1 ring-[rgba(26,34,56,0.08)]">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 20V10"></path>
-                        <path d="M10 20V4"></path>
-                        <path d="M16 20v-7"></path>
-                        <path d="M22 20H2"></path>
-                    </svg>
-                </div>
-                <h3 class="mt-5 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Tracking & Auswertung', 'agentur-jg-theme'); ?></h3>
-                <p class="mt-3 text-base leading-7 text-[#51607C]">
-                    <?php esc_html_e('Damit sichtbar wird, wie Ihre Website arbeitet und welche Maßnahmen sich lohnen.', 'agentur-jg-theme'); ?>
-                </p>
-                <p class="mt-5 border-t border-[rgba(26,34,56,0.10)] pt-4 text-sm leading-6 text-[#636E89]">
-                    <span class="font-semibold text-[#1A2238]"><?php esc_html_e('Sinnvoll, wenn:', 'agentur-jg-theme'); ?></span>
-                    <?php esc_html_e(' Sie heute nicht genau wissen, was Ihre Website bringt.', 'agentur-jg-theme'); ?>
-                </p>
-            </article>
-        </div>
-
-        <div class="mx-auto mt-12 max-w-3xl text-center">
-            <p class="text-lg leading-8 text-[#51607C]">
-                <?php esc_html_e('Oft ist nicht eine einzelne Maßnahme entscheidend, sondern die richtige Reihenfolge.', 'agentur-jg-theme'); ?>
-            </p>
-            <div class="mt-7">
-                <a class="inline-flex items-center justify-center rounded-[10px] bg-[#1A2238] px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
-                    <?php esc_html_e('Nächsten Schritt besprechen', 'agentur-jg-theme'); ?>
+                <a class="mt-4 inline-flex items-center text-sm font-semibold text-[#3D5A80]" href="<?php echo esc_url(home_url('/leistungen/')); ?>">
+                    <?php esc_html_e('Alle Leistungen ansehen', 'agentur-jg-theme'); ?>
+                    <span class="ml-2" aria-hidden="true">-&gt;</span>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<section id="methode" class="bg-[#F6F8FA]">
-    <div class="mx-auto max-w-[1200px] px-5 py-20 text-center sm:px-8 lg:px-10 lg:py-28">
-        <div class="mx-auto max-w-3xl">
-            <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#3D5A80] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#4E6E97]">
-                <?php esc_html_e('Der Weg zur wirksamen Website', 'agentur-jg-theme'); ?>
-            </p>
-
-            <h2 class="text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.06] tracking-[-0.03em] text-[#1A2238]">
-                <?php esc_html_e('Aus einer Website wird erst dann ein Werkzeug, wenn sie ein klares Ziel verfolgt.', 'agentur-jg-theme'); ?>
-            </h2>
-
-            <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#51607C]">
-                <?php esc_html_e('Deshalb starte ich nicht bei Farben, Layouts oder einzelnen Maßnahmen. Zuerst klären wir, was Ihre Website leisten soll, wen sie erreichen muss und woran später sichtbar wird, ob sie funktioniert.', 'agentur-jg-theme'); ?>
-            </p>
-        </div>
-
-        <div class="relative mt-14 overflow-hidden rounded-[22px] border border-[rgba(26,34,56,0.10)] bg-white text-left shadow-[0_18px_50px_rgba(20,26,43,0.08)]">
-            <div class="absolute left-0 right-0 top-[76px] hidden h-px bg-[rgba(26,34,56,0.10)] lg:block" aria-hidden="true"></div>
-
-            <div class="grid lg:grid-cols-5">
-                <article class="relative border-b border-[rgba(26,34,56,0.10)] px-5 py-7 sm:px-7 lg:border-b-0 lg:border-r">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#3D5A80]/20 bg-[#F6F8FA] text-xs font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">01</span>
-                    <h3 class="mt-6 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Ziel klären', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-3 text-base leading-7 text-[#51607C]">
-                        <?php esc_html_e('Mehr Kunden, mehr Umsatz, mehr Bewerbungen oder mehr qualifizierte Anfragen? Erst wenn das Ziel klar ist, lässt sich die Website sinnvoll bewerten.', 'agentur-jg-theme'); ?>
-                    </p>
-                </article>
-
-                <article class="relative border-b border-[rgba(26,34,56,0.10)] px-5 py-7 sm:px-7 lg:border-b-0 lg:border-r">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#3D5A80]/20 bg-[#F6F8FA] text-xs font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">02</span>
-                    <h3 class="mt-6 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Ist-Zustand prüfen', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-3 text-base leading-7 text-[#51607C]">
-                        <?php esc_html_e('Gibt es bereits eine Website? Wie wirkt sie? Wird etwas gemessen? Wir schauen auf vorhandene Inhalte, Besucher, Anfragen und Schwachstellen.', 'agentur-jg-theme'); ?>
-                    </p>
-                </article>
-
-                <article class="relative border-b border-[rgba(26,34,56,0.10)] px-5 py-7 sm:px-7 lg:border-b-0 lg:border-r">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#3D5A80]/20 bg-[#F6F8FA] text-xs font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">03</span>
-                    <h3 class="mt-6 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Zielgruppe und Angebot verstehen', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-3 text-base leading-7 text-[#51607C]">
-                        <?php esc_html_e('Wir klären, welche Menschen erreicht werden sollen, welche Probleme sie haben und wie Ihr Angebot verständlich und überzeugend präsentiert wird.', 'agentur-jg-theme'); ?>
-                    </p>
-                </article>
-
-                <article class="relative border-b border-[rgba(26,34,56,0.10)] px-5 py-7 sm:px-7 lg:border-b-0 lg:border-r">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#3D5A80]/20 bg-[#F6F8FA] text-xs font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">04</span>
-                    <h3 class="mt-6 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Website aufbauen oder verbessern', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-3 text-base leading-7 text-[#51607C]">
-                        <?php esc_html_e('Je nach Ausgangslage entsteht eine neue Website oder eine bestehende Seite wird so optimiert, dass sie Vertrauen aufbaut und zur Handlung führt.', 'agentur-jg-theme'); ?>
-                    </p>
-                </article>
-
-                <article class="relative px-5 py-7 sm:px-7">
-                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#3D5A80]/20 bg-[#F6F8FA] text-xs font-semibold text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">05</span>
-                    <h3 class="mt-6 text-xl font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Besucher gewinnen und messen', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-3 text-base leading-7 text-[#51607C]">
-                        <?php esc_html_e('Über SEO, Google Ads oder lokale Sichtbarkeit bringen wir relevante Menschen auf die Website und messen, was daraus entsteht.', 'agentur-jg-theme'); ?>
-                    </p>
-                </article>
-            </div>
-        </div>
-
-        <div class="mt-10">
-            <a class="inline-flex items-center justify-center rounded-[10px] bg-[#1A2238] px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
-                <?php esc_html_e('Eigene Ausgangslage besprechen', 'agentur-jg-theme'); ?>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="referenzen" class="bg-[#F6F8FA]">
-    <div class="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+<section id="leistungen" class="border-y border-[rgba(26,34,56,0.10)] bg-[#F6F8FA]">
+    <div class="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <div class="max-w-3xl">
             <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#3D5A80] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#4E6E97]">
-                <?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?>
+                <?php esc_html_e('Leistungen für inhabergeführte Betriebe', 'agentur-jg-theme'); ?>
             </p>
-
             <h2 class="text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.06] tracking-[-0.03em] text-[#1A2238]">
-                <?php esc_html_e('Zwei Projekte. Zwei Ausgangslagen. Ein Ziel: digitale Auftritte, die wirklich arbeiten.', 'agentur-jg-theme'); ?>
+                <?php esc_html_e('Was Ihre Website braucht, hängt davon ab, wo sie gerade steht.', 'agentur-jg-theme'); ?>
             </h2>
-
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-[#51607C]">
-                <?php esc_html_e('Manchmal geht es darum, eine bestehende Website zu einem digitalen Vertriebs- und Recruiting-Werkzeug auszubauen. Manchmal darum, für ein neues Unternehmen von Anfang an eine solide Grundlage zu schaffen.', 'agentur-jg-theme'); ?>
-            </p>
         </div>
 
-        <div class="mt-14 grid gap-9">
-            <article class="overflow-hidden rounded-[22px] border border-[rgba(26,34,56,0.10)] bg-white shadow-[0_18px_50px_rgba(20,26,43,0.08)]">
-                <div class="border-b border-[rgba(26,34,56,0.10)] bg-[#EDEFF3] p-4 sm:p-6 lg:p-7">
-                    <div class="overflow-hidden rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white shadow-sm">
-                        <div class="flex h-11 items-center gap-2 border-b border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] px-4">
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="ml-auto rounded-md border border-[rgba(26,34,56,0.10)] bg-white px-3 py-1 text-[0.68rem] text-[#51607C] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">
-                                <?php esc_html_e('kopp-umwelt.de', 'agentur-jg-theme'); ?>
-                            </span>
-                        </div>
-                        <img class="aspect-[16/9] w-full object-cover object-top" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/KOPP-Umwelt_Website_Referenz_AgenturJG.webp'); ?>" alt="<?php esc_attr_e('Screenshot der KOPP Umwelt Website', 'agentur-jg-theme'); ?>">
-                    </div>
-                </div>
-
-                <div class="grid gap-8 p-5 sm:p-7 lg:grid-cols-[0.75fr_1.25fr] lg:p-9">
-                    <div>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <span class="rounded-full border border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Entsorgung & Containerdienst', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full border border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Heidenrod-Kemel', 'agentur-jg-theme'); ?></span>
-                        </div>
-                        <h3 class="mt-5 text-[clamp(1.65rem,2.8vw,2.35rem)] font-bold leading-tight tracking-[-0.03em] text-[#1A2238]"><?php esc_html_e('KOPP Umwelt', 'agentur-jg-theme'); ?></h3>
-                        <p class="mt-4 text-lg leading-8 text-[#51607C]">
-                            <?php esc_html_e('Aus einer veralteten Website wurde eine digitale Plattform für Buchungen, Bestandskunden, Sichtbarkeit und Recruiting.', 'agentur-jg-theme'); ?>
-                        </p>
-
-                        <div class="mt-7 flex flex-wrap gap-2">
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('Shop integriert', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('SEO & Google Ads', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('Kundenportal angebunden', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('Recruiting unterstützt', 'agentur-jg-theme'); ?></span>
-                        </div>
-
-                        <a class="mt-7 inline-flex items-center justify-center rounded-[10px] border border-[rgba(26,34,56,0.16)] bg-white px-5 py-3 text-sm font-semibold text-[#1A2238] transition hover:border-[#1A2238] hover:bg-[#F6F8FA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="https://kopp-umwelt.de" target="_blank" rel="nofollow noopener noreferrer">
-                            <?php esc_html_e('Jetzt live ansehen', 'agentur-jg-theme'); ?>
-                        </a>
-                    </div>
-
-                    <div class="grid gap-5">
-                        <div class="grid gap-3 border-t border-[rgba(26,34,56,0.10)] pt-5 sm:grid-cols-[150px_1fr]">
-                            <h4 class="text-sm font-semibold uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Ausgangslage', 'agentur-jg-theme'); ?></h4>
-                            <p class="text-base leading-7 text-[#51607C]"><?php esc_html_e('Die bisherige Website war einfach aufgebaut, gestalterisch veraltet und bildete die heutigen Anforderungen des Unternehmens nicht mehr ab.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                        <div class="grid gap-3 border-t border-[rgba(26,34,56,0.10)] pt-5 sm:grid-cols-[150px_1fr]">
-                            <h4 class="text-sm font-semibold uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Umsetzung', 'agentur-jg-theme'); ?></h4>
-                            <p class="text-base leading-7 text-[#51607C]"><?php esc_html_e('Integration eines Shops für Containerdienstleistungen, Anbindung des Kundenportals, Aufbau von SEO- und Google-Ads-Maßnahmen sowie Veröffentlichung optimierter Stellenanzeigen.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                        <div class="grid gap-3 border-t border-[rgba(26,34,56,0.10)] pt-5 sm:grid-cols-[150px_1fr]">
-                            <h4 class="text-sm font-semibold uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Wirkung', 'agentur-jg-theme'); ?></h4>
-                            <p class="text-base leading-7 text-[#51607C]"><?php esc_html_e('Containerleistungen wurden direkt über die Website buchbar – ohne Telefonat, ohne manuellen Aufwand. Offene Stellen wurden binnen weniger Wochen über die neue Online-Präsenz besetzt. SEO-Inhalte beantworten häufige Fragen bereits vor dem ersten Kontakt.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="overflow-hidden rounded-[22px] border border-[rgba(26,34,56,0.10)] bg-white shadow-[0_18px_50px_rgba(20,26,43,0.08)]">
-                <div class="border-b border-[rgba(26,34,56,0.10)] bg-[#EDEFF3] p-4 sm:p-6 lg:p-7">
-                    <div class="overflow-hidden rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white shadow-sm">
-                        <div class="flex h-11 items-center gap-2 border-b border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] px-4">
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-[#98A8BE]/70"></span>
-                            <span class="ml-auto rounded-md border border-[rgba(26,34,56,0.10)] bg-white px-3 py-1 text-[0.68rem] text-[#51607C] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]">
-                                <?php esc_html_e('max-kfz.de', 'agentur-jg-theme'); ?>
-                            </span>
-                        </div>
-                        <img class="aspect-[16/9] w-full object-cover object-top" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/MAX-KFZ_Website_Referenz_AgenturJG.webp'); ?>" alt="<?php esc_attr_e('Screenshot der Max KFZ Website', 'agentur-jg-theme'); ?>">
-                    </div>
-                </div>
-
-                <div class="grid gap-8 p-5 sm:p-7 lg:grid-cols-[0.75fr_1.25fr] lg:p-9">
-                    <div>
-                        <div class="flex flex-wrap items-center gap-3">
-                            <span class="rounded-full border border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('KFZ-Werkstatt', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full border border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[#636E89] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Holzhausen a.d. Haide', 'agentur-jg-theme'); ?></span>
-                        </div>
-                        <h3 class="mt-5 text-[clamp(1.65rem,2.8vw,2.35rem)] font-bold leading-tight tracking-[-0.03em] text-[#1A2238]"><?php esc_html_e('Max KFZ', 'agentur-jg-theme'); ?></h3>
-                        <p class="mt-4 text-lg leading-8 text-[#51607C]">
-                            <?php esc_html_e('Zum Start der neuen Werkstatt entstand eine Website, die Vertrauen aufbaut, Kontaktwege bündelt und Terminbuchungen vorbereitet.', 'agentur-jg-theme'); ?>
-                        </p>
-
-                        <div class="mt-7 flex flex-wrap gap-2">
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('Neue Website', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('Zielgruppenanalyse', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('WhatsApp eingebunden', 'agentur-jg-theme'); ?></span>
-                            <span class="rounded-full bg-[#EDEFF3] px-3 py-1 text-sm font-medium text-[#34507A]"><?php esc_html_e('Terminbuchung vorbereitet', 'agentur-jg-theme'); ?></span>
-                        </div>
-
-                        <a class="mt-7 inline-flex items-center justify-center rounded-[10px] border border-[rgba(26,34,56,0.16)] bg-white px-5 py-3 text-sm font-semibold text-[#1A2238] transition hover:border-[#1A2238] hover:bg-[#F6F8FA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="https://max-kfz.de" target="_blank" rel="nofollow noopener noreferrer">
-                            <?php esc_html_e('Jetzt live ansehen', 'agentur-jg-theme'); ?>
-                        </a>
-                    </div>
-
-                    <div class="grid gap-5">
-                        <div class="grid gap-3 border-t border-[rgba(26,34,56,0.10)] pt-5 sm:grid-cols-[150px_1fr]">
-                            <h4 class="text-sm font-semibold uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Ausgangslage', 'agentur-jg-theme'); ?></h4>
-                            <p class="text-base leading-7 text-[#51607C]"><?php esc_html_e('Max brauchte für seine neue KFZ-Werkstatt eine professionelle digitale Grundlage, die zum Budget und zur lokalen Zielgruppe passt.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                        <div class="grid gap-3 border-t border-[rgba(26,34,56,0.10)] pt-5 sm:grid-cols-[150px_1fr]">
-                            <h4 class="text-sm font-semibold uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Umsetzung', 'agentur-jg-theme'); ?></h4>
-                            <p class="text-base leading-7 text-[#51607C]"><?php esc_html_e('Analyse der Zielgruppe, Aufbau einer maßgeschneiderten Website und Bündelung wichtiger Kontakt- und Vertrauenskanäle wie WhatsApp und Terminbuchung.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                        <div class="grid gap-3 border-t border-[rgba(26,34,56,0.10)] pt-5 sm:grid-cols-[150px_1fr]">
-                            <h4 class="text-sm font-semibold uppercase tracking-[0.12em] text-[#34507A] [font-family:'IBM_Plex_Mono',ui-monospace,monospace]"><?php esc_html_e('Wirkung', 'agentur-jg-theme'); ?></h4>
-                            <p class="text-base leading-7 text-[#51607C]"><?php esc_html_e('Die neue Werkstatt hatte von Anfang an einen professionellen digitalen Auftritt. Interessenten finden schnell, was sie brauchen, und kommen bereits gut informiert in das erste Gespräch.', 'agentur-jg-theme'); ?></p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
-
-        <div class="mx-auto mt-12 max-w-3xl text-center">
-            <p class="text-lg leading-8 text-[#51607C]">
-                <?php esc_html_e('Nicht jedes Projekt braucht denselben Umfang. Wichtig ist, dass Website, Zielgruppe und nächster Schritt zusammenpassen.', 'agentur-jg-theme'); ?>
-            </p>
-            <div class="mt-7">
-                <a class="inline-flex items-center justify-center rounded-[10px] bg-[#1A2238] px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
-                    <?php esc_html_e('Eigenes Projekt besprechen', 'agentur-jg-theme'); ?>
+        <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <?php foreach ($leistungen as $leistung) : ?>
+                <a href="<?php echo esc_url(home_url('/leistungen/' . $leistung['slug'] . '/')); ?>"
+                   class="group rounded-[16px] border border-[rgba(26,34,56,0.10)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[rgba(61,90,128,0.28)] hover:shadow-[0_18px_45px_rgba(20,26,43,0.10)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3D5A80]">
+                    <span class="flex h-12 w-12 items-center justify-center rounded-[12px] bg-[#F6F8FA] text-[#3D5A80] ring-1 ring-[rgba(26,34,56,0.10)] transition group-hover:bg-white group-hover:ring-[rgba(61,90,128,0.28)]">
+                        <?php agentur_jg_front_page_icon($leistung['icon']); ?>
+                    </span>
+                    <h3 class="mt-6 text-xl font-bold tracking-[-0.02em] text-[#1A2238]">
+                        <?php echo esc_html($leistung['title']); ?>
+                    </h3>
+                    <p class="mt-3 text-base leading-7 text-[#51607C]">
+                        <?php echo esc_html($leistung['description']); ?>
+                    </p>
+                    <p class="mt-4 border-t border-[rgba(26,34,56,0.10)] pt-4 text-sm leading-6 text-[#636E89]">
+                        <span class="font-semibold text-[#1A2238]"><?php esc_html_e('Sinnvoll, wenn:', 'agentur-jg-theme'); ?></span>
+                        <?php echo esc_html($leistung['fit']); ?>
+                    </p>
+                    <span class="mt-6 inline-flex items-center text-sm font-semibold text-[#3D5A80]">
+                        <?php esc_html_e('Mehr erfahren', 'agentur-jg-theme'); ?>
+                        <span class="ml-2 transition group-hover:translate-x-1" aria-hidden="true">-&gt;</span>
+                    </span>
                 </a>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
 
-<section id="warum-agentur-jg" class="relative isolate overflow-hidden bg-[#1A2238] text-white">
-    <div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:34px_34px] [mask-image:radial-gradient(circle_at_25%_35%,#000,transparent_72%)]"></div>
-    <div class="absolute inset-x-0 top-0 h-px bg-white/10"></div>
-    <div class="absolute inset-x-0 bottom-0 h-px bg-white/10"></div>
-
-    <div class="mx-auto grid max-w-[1200px] gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:px-10 lg:py-28">
-        <div class="max-w-2xl">
-            <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#AEBAD2] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#AEBAD2]">
-                <?php esc_html_e('Warum Agentur JG', 'agentur-jg-theme'); ?>
+<section class="bg-white">
+    <div class="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <div>
+                <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#3D5A80] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#4E6E97]">
+                    <?php esc_html_e('Orientierung', 'agentur-jg-theme'); ?>
+                </p>
+                <h2 class="text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.06] tracking-[-0.03em] text-[#1A2238]">
+                    <?php esc_html_e('Erst einordnen, dann entscheiden.', 'agentur-jg-theme'); ?>
+                </h2>
+            </div>
+            <p class="max-w-2xl text-lg leading-8 text-[#51607C] lg:justify-self-end">
+                <?php esc_html_e('Hier finden Sie Projekte, meinen Hintergrund und den genauen Ablauf der Zusammenarbeit.', 'agentur-jg-theme'); ?>
             </p>
+        </div>
 
-            <h2 class="text-[clamp(2.25rem,4.8vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-white">
-                <?php esc_html_e('Klarer planen. Verständlicher umsetzen. Besser entscheiden.', 'agentur-jg-theme'); ?>
-            </h2>
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+            <?php foreach ($orientierung as $item) : ?>
+                <a href="<?php echo esc_url($item['url']); ?>"
+                   class="group border-l-2 border-[#3D5A80] bg-[#F6F8FA] px-6 py-6 transition hover:bg-white hover:shadow-[0_16px_40px_rgba(20,26,43,0.08)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3D5A80]">
+                    <h3 class="text-xl font-bold tracking-[-0.02em] text-[#1A2238]">
+                        <?php echo esc_html($item['label']); ?>
+                    </h3>
+                    <p class="mt-3 text-base leading-7 text-[#51607C]">
+                        <?php echo esc_html($item['description']); ?>
+                    </p>
+                    <span class="mt-5 inline-flex items-center text-sm font-semibold text-[#3D5A80]">
+                        <?php esc_html_e('Ansehen', 'agentur-jg-theme'); ?>
+                        <span class="ml-2 transition group-hover:translate-x-1" aria-hidden="true">-&gt;</span>
+                    </span>
+                </a>
+            <?php endforeach; ?>
+        </div>
 
-            <p class="mt-7 text-lg leading-8 text-[#D7DEEA]">
-                <?php esc_html_e('Online-Marketing muss nicht laut oder kompliziert sein. Ich zeige Ihnen, welche Schritte sinnvoll sind, was sie bewirken sollen und woran wir erkennen, ob sie funktionieren.', 'agentur-jg-theme'); ?>
-            </p>
-
-            <div class="mt-9">
-                <a class="inline-flex items-center justify-center rounded-[10px] bg-white px-6 py-4 text-base font-semibold text-[#1A2238] shadow-sm transition hover:-translate-y-px hover:bg-[#F6F8FA] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#98C1D9]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
+        <div class="mt-12 border-t border-[rgba(26,34,56,0.10)] pt-10">
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                <div class="max-w-2xl">
+                    <h2 class="text-[clamp(1.8rem,3vw,2.6rem)] font-bold leading-tight tracking-[-0.03em] text-[#1A2238]">
+                        <?php esc_html_e('Sie möchten wissen, welcher Schritt für Sie sinnvoll ist?', 'agentur-jg-theme'); ?>
+                    </h2>
+                    <p class="mt-4 text-base leading-7 text-[#51607C]">
+                        <?php esc_html_e('Schildern Sie kurz Ihre Ausgangslage. Ich gebe Ihnen eine ehrliche Einschätzung, was sich lohnt und was warten kann.', 'agentur-jg-theme'); ?>
+                    </p>
+                </div>
+                <a class="inline-flex items-center justify-center rounded-[10px] bg-[#1A2238] px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
                     <?php esc_html_e('Unverbindlich anfragen', 'agentur-jg-theme'); ?>
                 </a>
-            </div>
-        </div>
-
-        <div class="rounded-[22px] border border-white/12 bg-white/[0.06] p-5 shadow-[0_24px_70px_rgba(0,0,0,0.22)] backdrop-blur sm:p-7 lg:p-8">
-            <div class="divide-y divide-white/10">
-                <details class="group py-5 first:pt-0 last:pb-0" open>
-                    <summary class="grid cursor-pointer list-none grid-cols-[42px_1fr_24px] items-center gap-4 [&::-webkit-details-marker]:hidden">
-                        <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5"></path>
-                            </svg>
-                        </span>
-                        <span class="text-lg font-bold tracking-[-0.01em] text-white sm:text-xl"><?php esc_html_e('Verständlich statt kompliziert', 'agentur-jg-theme'); ?></span>
-                        <span class="text-2xl leading-none text-[#98C1D9] transition group-open:rotate-45" aria-hidden="true">+</span>
-                    </summary>
-                    <p class="mt-4 pl-0 text-base leading-7 text-[#D7DEEA] sm:pl-[58px]"><?php esc_html_e('Sie müssen kein Marketing-Experte sein. Ich erkläre, was wir tun, warum es sinnvoll ist und welche Wirkung wir erwarten können.', 'agentur-jg-theme'); ?></p>
-                </details>
-
-                <details class="group py-5 first:pt-0 last:pb-0">
-                    <summary class="grid cursor-pointer list-none grid-cols-[42px_1fr_24px] items-center gap-4 [&::-webkit-details-marker]:hidden">
-                        <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5"></path>
-                            </svg>
-                        </span>
-                        <span class="text-lg font-bold tracking-[-0.01em] text-white sm:text-xl"><?php esc_html_e('Strategie vor Umsetzung', 'agentur-jg-theme'); ?></span>
-                        <span class="text-2xl leading-none text-[#98C1D9] transition group-open:rotate-45" aria-hidden="true">+</span>
-                    </summary>
-                    <p class="mt-4 pl-0 text-base leading-7 text-[#D7DEEA] sm:pl-[58px]"><?php esc_html_e('Nicht jede Maßnahme passt zu jedem Unternehmen. Erst klären wir Ziel, Ausgangslage und Zielgruppe, dann entscheiden wir über die Lösung.', 'agentur-jg-theme'); ?></p>
-                </details>
-
-                <details class="group py-5 first:pt-0 last:pb-0">
-                    <summary class="grid cursor-pointer list-none grid-cols-[42px_1fr_24px] items-center gap-4 [&::-webkit-details-marker]:hidden">
-                        <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5"></path>
-                            </svg>
-                        </span>
-                        <span class="text-lg font-bold tracking-[-0.01em] text-white sm:text-xl"><?php esc_html_e('Website als Werkzeug statt Designprojekt', 'agentur-jg-theme'); ?></span>
-                        <span class="text-2xl leading-none text-[#98C1D9] transition group-open:rotate-45" aria-hidden="true">+</span>
-                    </summary>
-                    <p class="mt-4 pl-0 text-base leading-7 text-[#D7DEEA] sm:pl-[58px]"><?php esc_html_e('Eine Website soll nicht nur gut aussehen. Sie soll sichtbar machen, Vertrauen aufbauen und Menschen zum nächsten Schritt führen.', 'agentur-jg-theme'); ?></p>
-                </details>
-
-                <details class="group py-5 first:pt-0 last:pb-0">
-                    <summary class="grid cursor-pointer list-none grid-cols-[42px_1fr_24px] items-center gap-4 [&::-webkit-details-marker]:hidden">
-                        <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5"></path>
-                            </svg>
-                        </span>
-                        <span class="text-lg font-bold tracking-[-0.01em] text-white sm:text-xl"><?php esc_html_e('Messbarkeit statt Bauchgefühl', 'agentur-jg-theme'); ?></span>
-                        <span class="text-2xl leading-none text-[#98C1D9] transition group-open:rotate-45" aria-hidden="true">+</span>
-                    </summary>
-                    <p class="mt-4 pl-0 text-base leading-7 text-[#D7DEEA] sm:pl-[58px]"><?php esc_html_e('Wir schauen nicht nur, ob etwas schön wirkt, sondern ob Besucher kommen, Kontaktwege genutzt werden und Maßnahmen sich lohnen.', 'agentur-jg-theme'); ?></p>
-                </details>
-
-                <details class="group py-5 first:pt-0 last:pb-0">
-                    <summary class="grid cursor-pointer list-none grid-cols-[42px_1fr_24px] items-center gap-4 [&::-webkit-details-marker]:hidden">
-                        <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5"></path>
-                            </svg>
-                        </span>
-                        <span class="text-lg font-bold tracking-[-0.01em] text-white sm:text-xl"><?php esc_html_e('Persönlicher Ansprechpartner', 'agentur-jg-theme'); ?></span>
-                        <span class="text-2xl leading-none text-[#98C1D9] transition group-open:rotate-45" aria-hidden="true">+</span>
-                    </summary>
-                    <p class="mt-4 pl-0 text-base leading-7 text-[#D7DEEA] sm:pl-[58px]"><?php esc_html_e('Sie sprechen direkt mit Jona. Ohne wechselnde Zuständigkeiten, ohne unnötige Umwege.', 'agentur-jg-theme'); ?></p>
-                </details>
-
-                <details class="group py-5 first:pt-0 last:pb-0">
-                    <summary class="grid cursor-pointer list-none grid-cols-[42px_1fr_24px] items-center gap-4 [&::-webkit-details-marker]:hidden">
-                        <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M20 6 9 17l-5-5"></path>
-                            </svg>
-                        </span>
-                        <span class="text-lg font-bold tracking-[-0.01em] text-white sm:text-xl"><?php esc_html_e('Keine leeren Versprechen', 'agentur-jg-theme'); ?></span>
-                        <span class="text-2xl leading-none text-[#98C1D9] transition group-open:rotate-45" aria-hidden="true">+</span>
-                    </summary>
-                    <p class="mt-4 pl-0 text-base leading-7 text-[#D7DEEA] sm:pl-[58px]"><?php esc_html_e('Ich gebe eine ehrliche Einschätzung, was realistisch ist, wo Potenzial liegt und wo Maßnahmen keinen Sinn ergeben.', 'agentur-jg-theme'); ?></p>
-                </details>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="ueber-jona" class="bg-white">
-    <div class="mx-auto grid max-w-[1200px] gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10 lg:py-28">
-        <div>
-            <div class="relative overflow-hidden rounded-[18px] border border-[rgba(26,34,56,0.10)] bg-[#F6F8FA] shadow-[0_18px_50px_rgba(20,26,43,0.10)]">
-                <div
-                    class="relative aspect-[4/5] select-none bg-cover bg-center"
-                    style="background-image: url('<?php echo esc_url($jona_private_portrait_url); ?>');"
-                    role="img"
-                    aria-label="<?php esc_attr_e('Jona von Agentur JG', 'agentur-jg-theme'); ?>"
-                    data-private-image
-                >
-                    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,34,56,0)_48%,rgba(26,34,56,0.58)_100%)]"></div>
-                    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:34px_34px] opacity-45 [mask-image:linear-gradient(to_bottom,transparent_0%,#000_45%,#000_100%)]"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-                        <div class="inline-flex items-center gap-3 rounded-[12px] border border-white/18 bg-[#1A2238]/78 px-4 py-3 text-white shadow-[0_14px_38px_rgba(20,26,43,0.24)] backdrop-blur">
-                            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-extrabold tracking-[-0.04em] text-[#1A2238]">
-                                <?php esc_html_e('JG', 'agentur-jg-theme'); ?>
-                            </span>
-                            <span>
-                                <span class="block text-sm font-bold tracking-[-0.01em]"><?php esc_html_e('Jona Gravelius', 'agentur-jg-theme'); ?></span>
-                                <span class="block text-xs text-[#D7DEEA]"><?php esc_html_e('Gründer · Agentur JG', 'agentur-jg-theme'); ?></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="max-w-3xl">
-            <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#3D5A80] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#4E6E97]">
-                <?php esc_html_e('Über mich', 'agentur-jg-theme'); ?>
-            </p>
-
-            <h2 class="text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.06] tracking-[-0.03em] text-[#1A2238]">
-                <?php esc_html_e('Hi, mein Name ist Jona und ich helfe Unternehmen, ihre Website wirtschaftlich zu denken.', 'agentur-jg-theme'); ?>
-            </h2>
-
-            <div class="mt-7 grid gap-5 text-lg leading-8 text-[#51607C]">
-                <p>
-                    <?php esc_html_e('Viele Unternehmen haben eine Website, wissen aber nicht, ob sie wirklich etwas bringt. Andere stehen noch am Anfang und suchen eine klare digitale Grundlage.', 'agentur-jg-theme'); ?>
-                </p>
-                <p>
-                    <?php esc_html_e('Ich weiß, dass viele Inhaber schlechte Erfahrungen mit Agenturen gemacht haben: Versprechen, die sich nicht erfüllt haben, Maßnahmen ohne erkennbares Ergebnis, Ansprechpartner, die wechseln. Deshalb arbeite ich anders: transparent, ohne Druck und mit einer klaren Einschätzung, was realistisch ist – und was nicht.', 'agentur-jg-theme'); ?>
-                </p>
-                <p>
-                    <?php esc_html_e('Mein Anspruch ist, Online-Marketing so zu erklären, dass Entscheidungen nachvollziehbar werden. Ohne unnötige Komplexität und ohne Maßnahmen, die nur gut klingen.', 'agentur-jg-theme'); ?>
-                </p>
-            </div>
-
-            <div class="mt-9 grid gap-4 sm:grid-cols-3">
-                <div class="border-l border-[rgba(26,34,56,0.14)] pl-4">
-                    <h3 class="text-base font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Klar erklärt', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-2 text-sm leading-6 text-[#51607C]"><?php esc_html_e('Sie wissen, was gemacht wird und warum.', 'agentur-jg-theme'); ?></p>
-                </div>
-                <div class="border-l border-[rgba(26,34,56,0.14)] pl-4">
-                    <h3 class="text-base font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Persönlich betreut', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-2 text-sm leading-6 text-[#51607C]"><?php esc_html_e('Sie sprechen direkt mit mir.', 'agentur-jg-theme'); ?></p>
-                </div>
-                <div class="border-l border-[rgba(26,34,56,0.14)] pl-4">
-                    <h3 class="text-base font-bold tracking-[-0.01em] text-[#1A2238]"><?php esc_html_e('Wirtschaftlich gedacht', 'agentur-jg-theme'); ?></h3>
-                    <p class="mt-2 text-sm leading-6 text-[#51607C]"><?php esc_html_e('Der nächste Schritt muss zu Ziel, Budget und Ausgangslage passen.', 'agentur-jg-theme'); ?></p>
-                </div>
-            </div>
-
-            <div class="mt-10 flex flex-wrap items-center gap-4">
-                <a class="inline-flex items-center justify-center rounded-[10px] bg-[#1A2238] px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-[#232D49] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3D5A80]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
-                    <?php esc_html_e('Gespräch mit Jona anfragen', 'agentur-jg-theme'); ?>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="kontakt" class="relative isolate overflow-hidden bg-[#1A2238] text-white">
-    <div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:34px_34px] [mask-image:radial-gradient(circle_at_72%_38%,#000,transparent_74%)]"></div>
-    <div class="absolute inset-x-0 top-0 h-px bg-white/10"></div>
-
-    <div class="mx-auto grid max-w-[1200px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:px-10 lg:py-28">
-        <div class="max-w-3xl">
-            <p class="mb-6 inline-flex items-center gap-3 text-xs font-medium uppercase text-[#AEBAD2] [font-family:'IBM_Plex_Mono',ui-monospace,monospace] tracking-[0.16em] before:h-px before:w-6 before:bg-[#AEBAD2]">
-                <?php esc_html_e('Nächster Schritt', 'agentur-jg-theme'); ?>
-            </p>
-
-            <h2 class="text-[clamp(2.25rem,4.8vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.035em] text-white">
-                <?php esc_html_e('Schildern Sie kurz Ihr Anliegen. Ich melde mich persönlich.', 'agentur-jg-theme'); ?>
-            </h2>
-
-            <p class="mt-7 max-w-2xl text-lg leading-8 text-[#D7DEEA]">
-                <?php esc_html_e('Egal ob Sie noch keine Website haben, Ihre bestehende Seite kaum Ergebnisse bringt oder Sie online sichtbarer werden möchten: Ein, zwei Sätze reichen für den Anfang.', 'agentur-jg-theme'); ?>
-            </p>
-
-            <div class="mt-10 flex flex-wrap gap-4">
-                <a class="inline-flex items-center justify-center rounded-[10px] bg-white px-6 py-4 text-base font-semibold text-[#1A2238] shadow-sm transition hover:-translate-y-px hover:bg-[#F6F8FA] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#98C1D9]" href="<?php echo esc_url(home_url('/kontakt/')); ?>">
-                    <?php esc_html_e('Unverbindlich anfragen', 'agentur-jg-theme'); ?>
-                </a>
-                <a class="inline-flex items-center justify-center rounded-[10px] border border-white/18 bg-white/[0.06] px-6 py-4 text-base font-semibold text-white transition hover:-translate-y-px hover:border-white/35 hover:bg-white/[0.10] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#98C1D9]" href="mailto:kontakt@agentur-jg.de">
-                    <?php esc_html_e('E-Mail schreiben', 'agentur-jg-theme'); ?>
-                </a>
-            </div>
-        </div>
-
-        <div class="rounded-[22px] border border-white/12 bg-white/[0.06] p-5 shadow-[0_24px_70px_rgba(0,0,0,0.22)] backdrop-blur sm:p-7 lg:p-8">
-            <div class="grid gap-5">
-                <div class="grid gap-4 sm:grid-cols-[42px_1fr]">
-                    <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M20 6 9 17l-5-5"></path>
-                        </svg>
-                    </span>
-                    <div>
-                        <h3 class="text-lg font-bold tracking-[-0.01em] text-white"><?php esc_html_e('Keine Verpflichtung', 'agentur-jg-theme'); ?></h3>
-                        <p class="mt-2 text-base leading-7 text-[#D7DEEA]"><?php esc_html_e('Sie müssen noch nicht genau wissen, welche Maßnahme Sie brauchen.', 'agentur-jg-theme'); ?></p>
-                    </div>
-                </div>
-
-                <div class="grid gap-4 border-t border-white/10 pt-5 sm:grid-cols-[42px_1fr]">
-                    <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M20 6 9 17l-5-5"></path>
-                        </svg>
-                    </span>
-                    <div>
-                        <h3 class="text-lg font-bold tracking-[-0.01em] text-white"><?php esc_html_e('Keine Verkaufsshow auf Druck', 'agentur-jg-theme'); ?></h3>
-                        <p class="mt-2 text-base leading-7 text-[#D7DEEA]"><?php esc_html_e('Wir schauen zuerst auf Ziel, Ausgangslage und sinnvolle nächste Schritte.', 'agentur-jg-theme'); ?></p>
-                    </div>
-                </div>
-
-                <div class="grid gap-4 border-t border-white/10 pt-5 sm:grid-cols-[42px_1fr]">
-                    <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[#98C1D9]/35 bg-[#98C1D9]/12 text-[#98C1D9]">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M20 6 9 17l-5-5"></path>
-                        </svg>
-                    </span>
-                    <div>
-                        <h3 class="text-lg font-bold tracking-[-0.01em] text-white"><?php esc_html_e('Persönliche Rückmeldung von Jona', 'agentur-jg-theme'); ?></h3>
-                        <p class="mt-2 text-base leading-7 text-[#D7DEEA]"><?php esc_html_e('Sie bekommen eine ehrliche Einschätzung, was realistisch ist und was keinen Sinn ergibt.', 'agentur-jg-theme'); ?></p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
