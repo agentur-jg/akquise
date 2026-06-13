@@ -4,7 +4,7 @@
     <h2 id="site-footer-heading" class="sr-only"><?php esc_html_e('Footer', 'agentur-jg-theme'); ?></h2>
 
     <div class="mx-auto max-w-[1200px] px-5 py-14 sm:px-8 lg:px-10 lg:py-16">
-        <div class="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[1.25fr_0.75fr_1fr]">
+        <div class="site-footer__grid">
             <div class="max-w-md">
                 <a class="site-brand text-white hover:text-white" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php esc_attr_e('Agentur JG Startseite', 'agentur-jg-theme'); ?>">
                     <img
@@ -34,6 +34,17 @@
                     <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/referenzen/')); ?>"><?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?></a>
                     <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/ueber-mich/')); ?>"><?php esc_html_e('Über mich', 'agentur-jg-theme'); ?></a>
                     <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/kontakt/')); ?>"><?php esc_html_e('Kontakt', 'agentur-jg-theme'); ?></a>
+                </div>
+            </nav>
+
+            <nav aria-label="<?php esc_attr_e('Regionale Seiten', 'agentur-jg-theme'); ?>">
+                <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#D8DEE9]">
+                    <?php esc_html_e('In Ihrer Region', 'agentur-jg-theme'); ?>
+                </h3>
+                <div class="mt-5 grid gap-3 text-sm">
+                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/webdesign-limburg/')); ?>"><?php esc_html_e('Webdesign Limburg', 'agentur-jg-theme'); ?></a>
+                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/webdesign-lahnstein/')); ?>"><?php esc_html_e('Webdesign Lahnstein', 'agentur-jg-theme'); ?></a>
+                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/webdesign-rheingau-taunus/')); ?>"><?php esc_html_e('Webdesign Rheingau-Taunus', 'agentur-jg-theme'); ?></a>
                 </div>
             </nav>
 

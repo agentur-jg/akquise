@@ -94,6 +94,28 @@ Architekturentscheidungen und getestete Ansätze mit Ergebnis.
 
 ---
 
+## 13.06.2026 – Tracking-Architektur: PHP-seitiger dataLayer-Push für Seitenkontext
+
+**Frage:** Wie sollen GA4-Events mit Seitenkontextdaten (Seitentyp, Leistung, Region) angereichert werden, damit Conversions und Klicks den Ursprungsseiten zugeordnet werden können?
+
+**Optionen:**
+1. GTM-seitig: URL-basierte Lookup-Tabelle (reguläre Ausdrücke je Slug)
+2. PHP-seitig: `dataLayer.push()` im `<head>` mit semantischen Werten aus einem PHP-`$page_map`-Array
+3. Nur `{{Page Path}}` als Parameter direkt in GTM-Tags nutzen (URL statt Semantik)
+
+**Entscheidung:** PHP-seitiger `dataLayer.push()` in `functions.php → agentur_jg_google_consent_mode()` mit `$page_map`-Array
+
+**Begründung:**
+- PHP kennt den Seitentyp zuverlässig über `get_post_field('post_name', get_queried_object_id())` und `is_front_page()`
+- Semantische Werte (`"service"`, `"local"`, `"contact"`) sind in GA4-Berichten direkt lesbar – keine URL-Parsing nötig
+- GTM-Lookup-Tabellen sind fehleranfällig bei URL-Strukturänderungen; PHP-Map wird mit dem Theme versioniert
+- DLV-Variablen (`DLV - page_type`, `DLV - service_name`, `DLV - region_name`) lesen die Werte in GTM – saubere Trennung zwischen Datenlieferung (PHP) und Datenverwendung (GTM-Tags)
+- Push läuft auf `wp_head` Priority 1, also vor GTM-Load → Werte sind bei Tag-Ausführung immer verfügbar
+
+**Ergebnis:** ✅ Vollständig verdrahtet in GTM v15. Alle relevanten Events (WhatsApp, E-Mail, CTA, Scroll) erhalten `page_type`, `service_name`, `region_name`.
+
+---
+
 ## 13.06.2026 – Lokale Landingpages: Shared Template vs. Duplicate Content
 
 **Frage:** Wie lassen sich mehrere standortspezifische Landingpages mit minimalem Aufwand pflegen, ohne zu viel identischen Content auszuspielen?

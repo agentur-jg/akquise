@@ -120,6 +120,35 @@
     @apply mt-4 w-full border-0 px-5 py-4 text-base text-white hover:text-white;
   }
 
+  .site-footer__grid {
+    @apply grid gap-10 border-b border-white/10 pb-10;
+  }
+
+  @media (min-width: 768px) {
+    .site-footer__grid {
+      grid-template-columns: minmax(0, 1.1fr) minmax(150px, 0.7fr);
+    }
+
+    .site-footer__grid > :last-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-footer__grid {
+      align-items: start;
+      grid-template-columns:
+        minmax(280px, 1.35fr)
+        minmax(120px, 0.55fr)
+        minmax(190px, 0.85fr)
+        minmax(240px, 1fr);
+    }
+
+    .site-footer__grid > :last-child {
+      grid-column: auto;
+    }
+  }
+
   .scroll-reveal {
     opacity: 1;
     transform: none;

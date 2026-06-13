@@ -1,6 +1,6 @@
 # Backlog – Kanal SEO
 **Ziel:** 1 qualifizierter SEO-Lead pro Monat → langfristig 1 Neukunde/Monat über organische Suche  
-**Stand:** 13. Juni 2026 | Stufe 1 + Stufe 3 + Stufe 4 (Leistungsseiten + Inhaltsseiten) abgeschlossen | Basis: SEO Audit `02_data/processed/seo-audit-20260610.md` | Keyword-Recherche: `02_data/processed/keyword-recherche-20260612.md`
+**Stand:** 13. Juni 2026 | Stufe 1 + Stufe 3 + Stufe 4 + Stufe 5 abgeschlossen | Basis: SEO Audit `02_data/processed/seo-audit-20260610.md` | Keyword-Recherche: `02_data/processed/keyword-recherche-20260612.md`
 
 ---
 
@@ -100,14 +100,16 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 
 ---
 
-### Stufe 5 – Strukturierte Daten (2–4 Stunden) ← nächster Schritt
+### Stufe 5 – Strukturierte Daten (2–4 Stunden)
 > Erhöht Click-Through-Rate durch Rich Snippets, hilft Google beim Verständnis des Angebots. Kompensiert teilweise den fehlenden GBP-Eintrag für lokale Sichtbarkeit.
 
-- [ ] **LocalBusiness-Schema auf Startseite einfügen**  
-  Felder: `name`, `address`, `telephone`, `url`, `serviceArea`, `priceRange`.
+- [x] **LocalBusiness-Schema auf Startseite einfügen**  
+  Felder: `name`, `address` (PLZ + Ort), `telephone`, `email`, `url`, `areaServed`, `priceRange`, `sameAs`, `makesOffer`.  
+  Umgesetzt 13.06.2026 in `functions.php → agentur_jg_local_business_schema()`.
 
-- [ ] **ProfessionalService- oder Organization-Schema ergänzen**  
-  Für Vertrauenssignale und mögliche Knowledge-Panel-Einträge.
+- [x] **ProfessionalService- oder Organization-Schema ergänzen**  
+  Kombiniert als `@type: ['LocalBusiness', 'ProfessionalService']`. Umgesetzt 13.06.2026.  
+  Zusätzlich: ortsspezifisches Schema auf lokalen Landingpages (`agentur_jg_lokal_page_schema()`).
 
 ---
 
@@ -144,6 +146,9 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 ---
 
 ### Stufe 8 – Monitoring & Iteration (laufend)
+
+- [x] **GA4-Tracking vollständig einrichten**
+  GTM v13–v15: Conversion-Tracking (generate_lead), Formular-Start/-Fehler, WhatsApp- und E-Mail-Klicks, CTA-Klicks, Scroll Depth (50 %/90 %). PHP-seitiger dataLayer-Push liefert Seitenkontext (page_type, service_name, region_name) für alle Events. GA4 Custom Dimensions angelegt (Seitentyp, Leistung, Region). generate_lead als Conversion markiert. Abgeschlossen 13.06.2026.
 
 - [ ] **Monatliches SEO-Review einrichten**  
   GSC und GA einmal pro Monat auswerten: Welche Keywords bringen Impressionen? Welche Seiten performen? Was hat sich verändert?

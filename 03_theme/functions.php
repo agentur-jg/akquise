@@ -48,10 +48,41 @@ add_action('wp_enqueue_scripts', 'agentur_jg_theme_assets');
 
 function agentur_jg_google_consent_mode(): void
 {
+    $post_name = (string) get_post_field('post_name', get_queried_object_id());
+
+    if (is_front_page()) {
+        $post_name = 'home';
+    }
+
+    $page_map = [
+        'home'                      => ['type' => 'homepage', 'service' => '', 'region' => ''],
+        'seo'                       => ['type' => 'service', 'service' => 'seo', 'region' => ''],
+        'google-ads'                => ['type' => 'service', 'service' => 'google-ads', 'region' => ''],
+        'website-erstellen-lassen'  => ['type' => 'service', 'service' => 'website-erstellen', 'region' => ''],
+        'website-optimierung'       => ['type' => 'service', 'service' => 'website-optimierung', 'region' => ''],
+        'mehr-anfragen'             => ['type' => 'service', 'service' => 'mehr-anfragen', 'region' => ''],
+        'website-analyse'           => ['type' => 'service', 'service' => 'website-analyse', 'region' => ''],
+        'leistungen'                => ['type' => 'service_overview', 'service' => '', 'region' => ''],
+        'webdesign-limburg'         => ['type' => 'local', 'service' => '', 'region' => 'limburg'],
+        'webdesign-lahnstein'       => ['type' => 'local', 'service' => '', 'region' => 'lahnstein'],
+        'webdesign-rheingau-taunus' => ['type' => 'local', 'service' => '', 'region' => 'rheingau-taunus'],
+        'kontakt'                   => ['type' => 'contact', 'service' => '', 'region' => ''],
+        'referenzen'                => ['type' => 'reference', 'service' => '', 'region' => ''],
+        'ablauf'                    => ['type' => 'process', 'service' => '', 'region' => ''],
+        'ueber-mich'                => ['type' => 'about', 'service' => '', 'region' => ''],
+    ];
+    $ctx = $page_map[$post_name] ?? ['type' => 'other', 'service' => '', 'region' => ''];
+    $data_layer_context = [
+        'page_type'    => $ctx['type'],
+        'service_name' => $ctx['service'],
+        'region_name'  => $ctx['region'],
+    ];
+
     ?>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){window.dataLayer.push(arguments);}
+        window.dataLayer.push(<?php echo wp_json_encode($data_layer_context, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>);
 
         gtag('consent', 'default', {
             'ad_storage': 'denied',
@@ -293,8 +324,19 @@ function agentur_jg_local_business_schema(): void
         'name' => 'Agentur JG',
         'url' => $home_url,
         'telephone' => '+491777091573',
+        'email' => 'kontakt@agentur-jg.de',
+        'address' => [
+            '@type' => 'PostalAddress',
+            'postalCode' => '56368',
+            'addressLocality' => 'Katzenelnbogen',
+            'addressRegion' => 'Rheinland-Pfalz',
+            'addressCountry' => 'DE',
+        ],
         'description' => 'Webdesign & Online-Marketing für kleine und mittelständische Unternehmen.',
         'priceRange' => '€€',
+        'sameAs' => [
+            'https://www.instagram.com/agenturjg',
+        ],
         'areaServed' => [
             [
                 '@type' => 'AdministrativeArea',
@@ -311,6 +353,14 @@ function agentur_jg_local_business_schema(): void
             [
                 '@type' => 'City',
                 'name' => 'Limburg an der Lahn',
+            ],
+            [
+                '@type' => 'City',
+                'name' => 'Lahnstein',
+            ],
+            [
+                '@type' => 'AdministrativeArea',
+                'name' => 'Rheingau-Taunus-Kreis',
             ],
         ],
         'makesOffer' => [
@@ -365,6 +415,60 @@ function agentur_jg_local_business_schema(): void
     );
 }
 add_action('wp_head', 'agentur_jg_local_business_schema', 30);
+
+function agentur_jg_lokal_page_schema(): void
+{
+    $lokal_areas = [
+        'webdesign-limburg'         => ['@type' => 'City', 'name' => 'Limburg an der Lahn'],
+        'webdesign-lahnstein'       => ['@type' => 'City', 'name' => 'Lahnstein'],
+        'webdesign-rheingau-taunus' => ['@type' => 'AdministrativeArea', 'name' => 'Rheingau-Taunus-Kreis'],
+    ];
+
+    $matched_area = null;
+
+    foreach ($lokal_areas as $slug => $area) {
+        if (is_page($slug)) {
+            $matched_area = $area;
+            break;
+        }
+    }
+
+    if ($matched_area === null) {
+        return;
+    }
+
+    $home_url = home_url('/');
+
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type'    => ['LocalBusiness', 'ProfessionalService'],
+        '@id'      => $home_url . '#business',
+        'name'     => 'Agentur JG',
+        'url'      => $home_url,
+        'telephone' => '+491777091573',
+        'email'    => 'kontakt@agentur-jg.de',
+        'address'  => [
+            '@type'           => 'PostalAddress',
+            'postalCode'      => '56368',
+            'addressLocality' => 'Katzenelnbogen',
+            'addressRegion'   => 'Rheinland-Pfalz',
+            'addressCountry'  => 'DE',
+        ],
+        'description' => 'Webdesign & Online-Marketing für kleine und mittelständische Unternehmen.',
+        'priceRange'  => '€€',
+        'sameAs'      => ['https://www.instagram.com/agenturjg'],
+        'areaServed'  => [
+            $matched_area,
+            ['@type' => 'AdministrativeArea', 'name' => 'Rhein-Lahn-Kreis'],
+        ],
+    ];
+
+    printf(
+        '<script type="application/ld+json">%s</script>' . "\n",
+        wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+    );
+}
+add_action('wp_head', 'agentur_jg_lokal_page_schema', 30);
 
 function agentur_jg_disable_rank_math_front_page_schema(array $data): array
 {

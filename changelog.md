@@ -1,5 +1,46 @@
 # Changelog
 
+## 13.06.2026 – Tracking-Ausbau: GTM v13–v15 + GA4 Custom Dimensions
+
+### GTM v13 – Conversion-Tracking Grundgerüst
+- `GA4 - Generate Lead` (Tag 28): feuert bei Seitenaufruf `/kontakt/?angefragt=1` → Formular-Conversion messbar
+- `GA4 - Lead Form Error` (Tag 29): feuert bei `/kontakt/?angefragt=fehler`
+- `GA4 - Lead Form Start` (Tag 30): Custom Event `lead_form_start` via focusin-Listener
+- `HTML - Lead Form Start Listener` (Tag 27): injiziert focusin-Listener per DOM-Ready-Trigger auf `/kontakt/`
+- `GA4 - Contact Click - WhatsApp` (Tag 31): Link-Click-Trigger auf `wa.me`
+- `GA4 - Contact Click - E-Mail` (Tag 32): Link-Click-Trigger auf `mailto:`
+- `GA4 - CTA Click - Header Kontakt` (Tag 33): Link-Click zu `/kontakt/` mit Text „Unverbindlich anfragen"
+- DLV-Variablen angelegt: `DLV - form_location`, `DLV - page_type`, `DLV - contact_method`
+
+### GTM v14 – Scroll Depth + Seitenpfad-Attribution
+- `GA4 - Scroll Depth` (Tag 36): feuert bei 50 % und 90 % vertikal, Parameter `percent_scrolled: {{Scroll Depth Threshold}}`
+- Trigger 34+35 (`Scroll 50%`, `Scroll 90%`): SCROLL_DEPTH, alle Seiten, WINDOW_LOAD
+- `Scroll Depth Threshold` Built-in Variable aktiviert
+- Tags 31+32: `page_type` von hardcoded `"contact"` auf `{{Page Path}}` geändert
+- Tag 33: `cta_name` von `"header_contact"` auf `{{Page Path}}` geändert
+
+### functions.php (parallel zu v14)
+- `agentur_jg_google_consent_mode()` ergänzt: `dataLayer.push()` mit `page_type`, `service_name`, `region_name` vor GTM-Load
+- `$page_map` mit allen Seiten-Slugs: Leistungsseiten → `type: 'service'`, lokale Seiten → `type: 'local'`, etc.
+- `get_queried_object_id()` statt `get_the_ID()` (funktioniert außerhalb des Loop)
+
+### GTM v15 – DLV-Variablen vollständig verdrahtet
+- `DLV - service_name` (Var 37): liest `service_name` aus dataLayer v2
+- `DLV - region_name` (Var 38): liest `region_name` aus dataLayer v2
+- Tags 31+32 (WhatsApp/E-Mail): `page_type` → `{{DLV - page_type}}`, neu: `service_name`, `region_name`
+- Tag 33 (CTA): neu: `service_name`, `region_name`
+- Tag 36 (Scroll): neu: `page_type`, `service_name`, `region_name`
+
+### functions.php (parallel zu v15)
+- `is_front_page()`-Check ergänzt: setzt `$post_name = 'home'` vor Map-Lookup
+- `$page_map` um `'home' → homepage` und `'leistungen' → service_overview` erweitert
+
+### GA4 Oberfläche
+- `generate_lead` als Conversion markiert
+- 3 Custom Dimensions (Event-scoped): `Seitentyp` → `page_type`, `Leistung` → `service_name`, `Region` → `region_name`
+
+---
+
 ## 13.06.2026 – Lokale Landingpages: Textoptimierung
 
 ### Duplicate-Content-Reduktion
