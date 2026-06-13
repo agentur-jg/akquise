@@ -102,8 +102,9 @@ ready(() => {
   const scrollStatements = document.querySelectorAll('[data-scroll-reveal]');
 
   if (scrollStatements.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    scrollStatements.forEach((statement) => {
-      const section = statement.closest('[data-scroll-statement-section]') || statement;
+    const preparedStatements = new Set();
+
+    const prepareStatement = (statement) => {
       const text = statement.textContent.trim();
       const words = text.split(/\s+/);
 
@@ -120,7 +121,22 @@ ready(() => {
         filter: 'blur(6px)',
       });
 
-      gsap.to(wordNodes, {
+      preparedStatements.add(statement);
+
+      return Array.from(wordNodes);
+    };
+
+    document.querySelectorAll('[data-scroll-statement-section]').forEach((section) => {
+      const sectionStatements = Array.from(section.querySelectorAll('[data-scroll-reveal]'));
+
+      if (!sectionStatements.length) {
+        return;
+      }
+
+      const sectionWords = sectionStatements.flatMap(prepareStatement);
+      const scrollLength = section.dataset.scrollRevealEnd || `+=${Math.max(170, sectionStatements.length * 90)}%`;
+
+      gsap.to(sectionWords, {
         autoAlpha: 1,
         y: 0,
         filter: 'blur(0px)',
@@ -128,6 +144,30 @@ ready(() => {
         stagger: 0.035,
         scrollTrigger: {
           trigger: section,
+          start: 'top top',
+          end: scrollLength,
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
+    });
+
+    scrollStatements.forEach((statement) => {
+      if (preparedStatements.has(statement)) {
+        return;
+      }
+
+      const wordNodes = prepareStatement(statement);
+
+      gsap.to(wordNodes, {
+        autoAlpha: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        ease: 'none',
+        stagger: 0.035,
+        scrollTrigger: {
+          trigger: statement,
           start: 'top top',
           end: '+=170%',
           scrub: true,

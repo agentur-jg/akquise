@@ -91,3 +91,23 @@ Architekturentscheidungen und getestete Ansätze mit Ergebnis.
 - WordPress `wp_enqueue_scripts` mit `is_page_template()`-Check als Standard-Muster
 
 **Ergebnis:** ✅ Umgesetzt. Lighthouse-Wert auf anderen Seiten nicht belastet.
+
+---
+
+## 13.06.2026 – Lokale Landingpages: Shared Template vs. Duplicate Content
+
+**Frage:** Wie lassen sich mehrere standortspezifische Landingpages mit minimalem Aufwand pflegen, ohne zu viel identischen Content auszuspielen?
+
+**Entscheidung:** Ein gemeinsames Template (`page-lokal-webdesign.php`) mit `$standorte`-Datenarray; standortspezifische Texte ausschließlich im Datenarray, kein HTML-Duplikat.
+
+**Begründung:**
+- Struktur und Design bleiben konsistent ohne Code-Duplikation
+- Standortspezifische Differenzierung (Headline, Intro, FAQ, CTA) liegt vollständig im Datenarray – kein Template-Umbau nötig
+- Geteilte Sektionen (Pain Points, Leistungskarten, Jona-Section, Referenzen) sind legitim: universell gültig, keine Keyword-Füllung
+
+**Duplicate-Content-Einschätzung:**
+- ~35–40 % des Fließtexts ist nach Optimierung standortspezifisch (vorher ca. 15–20 %)
+- FAQ-Section ist vollständig einzigartig pro Seite (größtes Differenzierungspotenzial)
+- Geteilter Content in Jona-Section und Referenzen ist inhaltlich gerechtfertigt
+
+**Ergebnis:** ✅ Texte überarbeitet und live. Siteliner-/Copyscape-Kontrolle empfohlen nach Indexierung.

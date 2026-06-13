@@ -143,7 +143,7 @@ get_header();
                         </div>
 
                         <div class="hidden justify-center sm:flex" aria-hidden="true">
-                            <svg class="h-28 w-12 text-[#98A8BE]" viewBox="0 0 48 112" fill="none">
+                            <svg class="h-36 w-14 text-[#98A8BE]" viewBox="0 0 48 112" fill="none">
                                 <path d="M8 18h12c12 0 20 8 20 20v36c0 12-8 20-20 20H8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path>
                                 <path d="m31 48 9 9-9 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>

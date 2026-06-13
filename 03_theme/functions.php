@@ -670,3 +670,34 @@ function agentur_jg_leistung_page_assets(): void
     );
 }
 add_action('wp_enqueue_scripts', 'agentur_jg_leistung_page_assets');
+
+function agentur_jg_lokal_page_assets(): void
+{
+    if (
+        ! is_page_template('page-lokal-webdesign.php')
+        && ! is_page(['webdesign-limburg', 'webdesign-lahnstein', 'webdesign-rheingau-taunus'])
+    ) {
+        return;
+    }
+
+    $theme_dir = get_template_directory();
+    $theme_uri = get_template_directory_uri();
+    $js_path   = $theme_dir . '/assets/js/leistung-page.js';
+
+    wp_enqueue_script(
+        'agentur-jg-gsap',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        [],
+        '3.12.5',
+        true
+    );
+
+    wp_enqueue_script(
+        'agentur-jg-lokal-page',
+        $theme_uri . '/assets/js/leistung-page.js',
+        ['agentur-jg-gsap'],
+        file_exists($js_path) ? (string) filemtime($js_path) : '1.0.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'agentur_jg_lokal_page_assets');

@@ -29,10 +29,10 @@
                     <?php esc_html_e('Navigation', 'agentur-jg-theme'); ?>
                 </h3>
                 <div class="mt-5 grid gap-3 text-sm">
-                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/#leistungen')); ?>"><?php esc_html_e('Leistungen', 'agentur-jg-theme'); ?></a>
-                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/#methode')); ?>"><?php esc_html_e('Ablauf', 'agentur-jg-theme'); ?></a>
-                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/#referenzen')); ?>"><?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?></a>
-                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/#ueber-jona')); ?>"><?php esc_html_e('Über mich', 'agentur-jg-theme'); ?></a>
+                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/leistungen/')); ?>"><?php esc_html_e('Leistungen', 'agentur-jg-theme'); ?></a>
+                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/ablauf/')); ?>"><?php esc_html_e('Ablauf', 'agentur-jg-theme'); ?></a>
+                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/referenzen/')); ?>"><?php esc_html_e('Referenzen', 'agentur-jg-theme'); ?></a>
+                    <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/ueber-mich/')); ?>"><?php esc_html_e('Über mich', 'agentur-jg-theme'); ?></a>
                     <a class="transition hover:text-white" href="<?php echo esc_url(home_url('/kontakt/')); ?>"><?php esc_html_e('Kontakt', 'agentur-jg-theme'); ?></a>
                 </div>
             </nav>

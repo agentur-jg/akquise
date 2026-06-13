@@ -1,5 +1,37 @@
 # Changelog
 
+## 13.06.2026 – Lokale Landingpages: Textoptimierung
+
+### Duplicate-Content-Reduktion
+- Headline, Intro, FAQ-Antworten und CTA-Headline für alle drei Standorte standortspezifisch überarbeitet
+- Limburg: lokaler Rhein-Lahn-Fokus, ehrliche Einschätzung als CTA
+- Lahnstein: Übergangslage Koblenz/Rhein-Lahn, spezifische FAQ-Antworten je Einzugsgebiet
+- Rheingau-Taunus: Heterogenität des Kreises (Rüdesheim bis Taunusstein) als Alleinstellungsmerkmal
+- Struktur des Templates (`page-lokal-webdesign.php`) bleibt unverändert
+- Analyse durch Claude, Umsetzung durch Codex, Review durch Claude
+
+---
+
+## 13.06.2026 – Lokale Landingpages Stufe 4
+
+### Neues lokales Page-Template
+- `page-lokal-webdesign.php` angelegt für `/webdesign-limburg/`, `/webdesign-lahnstein/` und `/webdesign-rheingau-taunus/`
+- Ein gemeinsames Standort-Datenarray steuert Hero, lokale Verankerung, Leistungsübersicht, Zielgruppen, FAQ und CTA
+- Slug-Templates `page-webdesign-limburg.php`, `page-webdesign-lahnstein.php` und `page-webdesign-rheingau-taunus.php` laden das gemeinsame Template automatisch über die WordPress Template-Hierarchy
+- Browser-Hero-Widget und FAQ-Markup orientieren sich an `page-leistung.php`; `leistung-page.js` wird wiederverwendet
+- Lokale Seiten nach Brand-System geschärft: Website als Werkzeug, kompakte Agentur-JG-Methode, regionale Referenzen, ruhige Trust-Box und CTA-Sprache ohne Verkaufsdruck
+
+### SEO-JSON
+- `seo/webdesign-limburg.json`
+- `seo/webdesign-lahnstein.json`
+- `seo/webdesign-rheingau-taunus.json`
+- Alle drei Dateien enthalten Title, Description und FAQ-Array für automatisches FAQPage JSON-LD
+
+### functions.php
+- `agentur_jg_lokal_page_assets()` lädt GSAP und `assets/js/leistung-page.js` nur für `page-lokal-webdesign.php` oder die drei lokalen Slugs
+
+---
+
 ## 12.06.2026 – Onepager → Multi-Page-Website + Stufe 4 abgeschlossen
 
 ### Website-Architektur: Onepager aufgelöst

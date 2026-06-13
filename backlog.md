@@ -1,6 +1,6 @@
 # Backlog – Kanal SEO
 **Ziel:** 1 qualifizierter SEO-Lead pro Monat → langfristig 1 Neukunde/Monat über organische Suche  
-**Stand:** 12. Juni 2026 | Stufe 1 + Stufe 4 (Leistungsseiten + Inhaltsseiten) abgeschlossen | Basis: SEO Audit `02_data/processed/seo-audit-20260610.md`
+**Stand:** 13. Juni 2026 | Stufe 1 + Stufe 3 + Stufe 4 (Leistungsseiten + Inhaltsseiten) abgeschlossen | Basis: SEO Audit `02_data/processed/seo-audit-20260610.md` | Keyword-Recherche: `02_data/processed/keyword-recherche-20260612.md`
 
 ---
 
@@ -33,14 +33,12 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 ### Stufe 2 – Google Business Profile (1 Woche, höchste lokale Wirkung)
 > Das GBP ist das wirksamste kostenlose SEO-Tool für lokale Dienstleister.
 
-- [x] **Google Business Profile anlegen und verifizieren**  
-  Profil erstellt. Privatadresse zur Verifikation hinterlegt (nicht öffentlich). Profil als Dienstleister im Einzugsgebiet (Rhein-Lahn-Kreis, Limburg, Rheingau-Taunus-Kreis) eingerichtet – kein öffentlicher Standort.  
-  Erstabnahme durch Google abgelehnt (Grund: fehlende Kundenpräsenz vor Ort / Einstufung als Online-Unternehmen).  
-  Einspruch eingereicht am 11.06.2026 inkl. Gewerbeanmeldung als Nachweis. Entscheidung per E-Mail ausstehend.  
-  Profil-Beschreibung angepasst: Hinweis auf persönliche Beratungstermine beim Kunden ergänzt.
+- [x] **Google Business Profile anlegen und verifizieren** – abgeschlossen (negativ)  
+  Profil erstellt. Einspruch 11.06.2026 → abgelehnt 13.06.2026.  
+  Ablehnungsgrund: kein verifizierbarer Standort mit physischem Kundenkontakt.  
+  **Entscheidung: GBP nicht weiter verfolgen.** Kompensation über LocalBusiness-Schema (Stufe 5), lokale Landingpages (Stufe 4) und Verzeichnis-Einträge (Stufe 7).
 
-- [x] **GBP-Beschreibung mit Keywords befüllen**  
-  Beschreibung befüllt mit Leistungen, Region und Hinweis auf Vor-Ort-Beratung. Umgesetzt am 11.06.2026.
+- [x] **GBP-Beschreibung mit Keywords befüllen** – entfällt (GBP nicht weiter verfolgt)
 
 - [ ] **Erste 3–5 Kundenbewertungen einholen**  
   Bestehende Referenzkunden (KOPP Umwelt, Max KFZ) aktiv um Google-Bewertungen bitten. Bewertungsanzahl ist direkter Rankingfaktor im Local Pack.
@@ -50,15 +48,17 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 ### Stufe 3 – Keyword-Recherche (1–2 Tage, Voraussetzung für alles weitere)
 > Ohne Keyword-Basis ist On-Page-Optimierung Raten.
 
-- [ ] **Keyword-Recherche durchführen**  
-  Cluster 1 – Lokal: „Webdesign [Katzenelnbogen/Nassau/Rhein-Lahn-Kreis/Westerwald]"  
-  Cluster 2 – Service: „SEO Agentur KMU", „Google Ads Agentur Mittelstand"  
-  Cluster 3 – Problem: „Website bringt keine Anfragen", „mehr Kunden über Google"  
-  Tools: Google Keyword Planner, Ubersuggest, Google Suggest.
+- [x] **Keyword-Recherche durchführen**  
+  Abgeschlossen 12.06.2026. 12 Batches im Google Keyword Planner, Tätigkeitsgebiet vollständig vermessen.  
+  Ergebnisse: `02_data/processed/keyword-recherche-20260612.md`
 
-- [ ] **1 primäres Keyword pro geplanter Seite festlegen**  
-  Startseite: Marken-Keyword + ein lokales Service-Keyword  
-  Je neue Landingpage: 1 Haupt-Keyword + 2–3 Neben-Keywords
+- [x] **1 primäres Keyword pro geplanter Seite festlegen**  
+  Validiertes Set (je 50 Suchanfragen/Monat, stabil):  
+  – `webdesign limburg` → `/webdesign-limburg/`  
+  – `webdesign lahnstein` → `/webdesign-lahnstein/`  
+  – `webdesign rheingau` + `webdesign taunus` → `/webdesign-rheingau-taunus/` (kombiniert)  
+  National (500/Monat): `webdesign handwerker` → `/webdesign-handwerker/` (mittelfristig)  
+  National (500/Monat): `seo für handwerker` → `/seo-handwerker/` (mittelfristig)
 
 ---
 
@@ -89,6 +89,10 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 - [x] **Inhaltsseiten: Ablauf, Referenzen, Über mich**  
   URLs: `/ablauf/`, `/referenzen/`, `/ueber-mich/` – Alle mit SEO-JSON + FAQPage-Schema. Umgesetzt 12.06.2026.
 
+- [x] **Lokale Landingpages: Limburg, Lahnstein, Rheingau-Taunus**
+  URLs: `/webdesign-limburg/`, `/webdesign-lahnstein/`, `/webdesign-rheingau-taunus/` – Umgesetzt 13.06.2026. Generisches Template `page-lokal-webdesign.php`, SEO-JSON mit FAQPage-Schema.
+  Texte überarbeitet 13.06.2026: Headline, Intro, FAQ-Antworten und CTA standortspezifisch differenziert (Duplicate-Content-Reduktion).
+
 - [ ] **Lokale Landingpage: Region Rhein-Lahn / Westerwald**  
   URL: `/webdesign-rhein-lahn-kreis/`  
   Zielkeyword: „Webdesign Rhein-Lahn-Kreis" / „Online-Marketing Westerwald"  
@@ -96,8 +100,8 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 
 ---
 
-### Stufe 5 – Strukturierte Daten (2–4 Stunden)
-> Erhöht Click-Through-Rate durch Rich Snippets, hilft Google beim Verständnis des Angebots.
+### Stufe 5 – Strukturierte Daten (2–4 Stunden) ← nächster Schritt
+> Erhöht Click-Through-Rate durch Rich Snippets, hilft Google beim Verständnis des Angebots. Kompensiert teilweise den fehlenden GBP-Eintrag für lokale Sichtbarkeit.
 
 - [ ] **LocalBusiness-Schema auf Startseite einfügen**  
   Felder: `name`, `address`, `telephone`, `url`, `serviceArea`, `priceRange`.
@@ -156,8 +160,8 @@ Die Maßnahmen sind nach ihrer Hebelwirkung sortiert: zuerst das, was den größ
 
 | Zeitraum | Erwartetes Ergebnis |
 |----------|---------------------|
-| Woche 1–2 | Technische Basis steht, GBP verifiziert, Sitemap eingereicht |
-| Monat 1–2 | Erste Impressionen für Ziel-Keywords in GSC sichtbar, GBP erscheint im Local Pack |
+| Woche 1–2 | Technische Basis steht, Sitemap eingereicht, LocalBusiness-Schema live |
+| Monat 1–2 | Erste Impressionen für Ziel-Keywords in GSC sichtbar, Verzeichnis-Einträge gesetzt |
 | Monat 3–4 | Erste organische Klicks auf Landingpages, 5–10 Nutzer/Monat organisch |
 | Monat 6+ | 20–50 organische Nutzer/Monat, erster SEO-Lead realistisch |
 
