@@ -1,5 +1,18 @@
 # Changelog
 
+## 14.06.2026 – Marketing-Struktur und Instagram-Agent
+
+### Marketing-Masterplan geschärft
+- `04_marketing/masterplan.md` als strategische Kanal-Landkarte neu strukturiert
+- operative To-dos aus dem Masterplan in `backlog.md` unter „Kanalübergreifendes Marketing" ergänzt
+- testbare Marketing- und Instagram-Hypothesen in `experiments.md` dokumentiert
+
+### Instagram-Arbeitsstruktur
+- `04_marketing/README.md` als Übersicht für den Marketing-Arbeitsbereich angelegt
+- `04_marketing/instagram/README.md` mit Kanalziel, Content-Säulen, Post-Struktur und KPI-Logik angelegt
+- `99_agents/INSTAGRAM_AGENT.md` als Agentenanweisung für CI-konforme, datengetriebene Instagram-Inhalte angelegt
+- erster Instagram-Post in `04_marketing/instagram/20260614_post_01/` gebündelt (`carousel.md`, `bildprompts.md`, `1.png` bis `6.png`)
+
 ## 13.06.2026 – Tracking-Ausbau: GTM v13–v15 + GA4 Custom Dimensions
 
 ### GTM v13 – Conversion-Tracking Grundgerüst

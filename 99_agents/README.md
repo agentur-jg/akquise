@@ -1,113 +1,118 @@
-# Agent-Kontext: Agentur JG – Akquise-Projekt
+# Agenten-Kontext: Agentur JG Akquise-System
 
-## Projekt auf einen Blick
+Diese Datei ist die Orientierung für KI-Agenten im Projekt `02_Akquise`. Sie erklärt, welche Informationen wo liegen, welche Rolle die Ordner spielen und welche Dateien vor typischen Aufgaben gelesen werden sollten.
 
-**Ziel:** 1 qualifizierter SEO-Lead pro Monat über organische Suche  
-**Website:** https://agentur-jg.de  
-**Tech-Stack:** WordPress + Custom Theme (`agentur-jg-theme`) + Rank Math (nur Sitemap + Sofortige Indexierung aktiv)  
-**Hosting:** All-Inkl (kasserver.com)
+Operative Regeln stehen in [CONVENTIONS.md](CONVENTIONS.md). Spezialisierte Workflows liegen ebenfalls hier, z. B. [AUDIT_AGENT.md](AUDIT_AGENT.md), [SITEMAP_AGENT.md](SITEMAP_AGENT.md) und [INSTAGRAM_AGENT.md](INSTAGRAM_AGENT.md).
 
----
+## Ziel des Systems
+
+Das Projekt soll langfristig die Kundenakquise der Agentur JG absichern. Dafür werden Brand-Wissen, Zielgruppen-Erkenntnisse, Website-Code, Marketingdaten und Sales-Material so abgelegt, dass KI-Agenten daraus verlässliche Analysen, Inhalte, Experimente und konkrete Umsetzungsschritte ableiten können.
+
+Aktuelles Wachstumsziel:
+
+- 1 qualifizierter SEO-Lead pro Monat über organische Suche
+- Website: https://agentur-jg.de
+- Tech-Stack: WordPress, Custom Theme `agentur-jg-theme`, Rank Math nur für Sitemap und Sofortige Indexierung
+- Hosting: All-Inkl / kasserver.com
+
+## Grundprinzip
+
+Dieses Repository ist kein statisches Markenhandbuch. Neue Daten aus Analytics, Search Console, Keyword-Recherche, Kundenfeedback, Sales-Gesprächen oder Kampagnen können bestehende Annahmen verbessern.
+
+Wichtig: Rohdaten bleiben als Quelle erhalten. Verdichtete Erkenntnisse dürfen in Brand-, Marketing- oder Sales-Dateien überführt werden, müssen dort aber mit Datum, Quelle und kurzer Begründung nachvollziehbar bleiben.
 
 ## Verzeichnisstruktur
 
-```
+```text
 02_Akquise/
-│
-├── 01_brand/                        Markenidentität (stabile Grundlagen)
-│   ├── 00_unternehmensziele.md      Geschäftsziele
-│   ├── 1-identity/                  Markenkern, Positionierung, Tonalität, Werte
-│   ├── 2-audience/                  Zielgruppendefinition
-│   ├── 3-strategy/                  Strategie
-│   ├── 4-website/                   Website-Konzept
-│   └── 5-messaging/                 Botschaften & Copy
-│
-├── 02_data/                         Daten & Analysen
-│   ├── raw/                         Rohdaten (nicht bearbeiten)
-│   │   ├── email/
-│   │   ├── google-analytics/
-│   │   ├── google-search-console/
-│   │   └── instagram/
-│   ├── processed/                   Aufbereitete Dokumente & Codex-Pläne
-│   │   ├── seo-audit-20260610.md    SEO-Audit (Basis für Backlog)
-│   │   └── codex-stufe1-title-meta.md
-│   └── sitemap/
-│
-├── 03_theme/                        WordPress-Theme (live auf dem Server)
-│   ├── seo/                         ← SEO-Daten pro Seite (title + description)
-│   │   └── home.json                Startseite
-│   ├── assets/                      CSS, JS, Images
-│   ├── functions.php                Theme-Logik, SEO-Loader, JSON-LD-Schema
-│   ├── front-page.php               Startseiten-Template
-│   └── ...
-│
-├── 04_marketing/                    Marketingkanäle
-│   ├── e-mail/
-│   ├── google-ads/
-│   ├── instagram/
-│   └── seo/                         SEO-Materialien (Keyword-Listen etc.)
-│
-├── 05_sales/                        Vertriebsprozess
-│   ├── 01-fragen/                   Qualifikationsfragen
-│   └── 02-angebot/                  Angebotsvorlagen
-│
-├── 99_agents/                       Dieser Ordner – Kontext für KI-Agenten
-│
-├── backlog.md                       ← Aktuelle Aufgaben (SEO-Stufen 1–8)
-├── changelog.md
-└── experiments.md
+|
++-- 01_brand/          Markenwissen, Zielgruppe, Strategie, Website-Konzept, Messaging
++-- 02_data/           Importierte Daten, Audits, Reports, Exporte und Analysen aus Quellen
++-- 03_theme/          Live genutztes WordPress-Theme der Website
++-- 04_marketing/      Kanalstrategie und Materialien für SEO, Instagram, E-Mail, Google Ads
++-- 05_sales/          Prozess nach Anfrage bis Angebotsunterzeichnung
++-- 99_agents/         Agenten-Kontext, Arbeitsregeln und Agenten-Briefings
++-- backlog.md         Priorisierte Aufgaben und nächste Umsetzungsschritte
++-- changelog.md       Dokumentierte Änderungen
++-- experiments.md     Tests, Hypothesen und Experimente
 ```
 
----
+## Ordnerrollen
 
-## Wichtigste Dateien für die meisten Tasks
+### `01_brand/`
 
-| Datei | Wofür |
+Enthält die relevanten Informationen zur Brand Agentur JG. Dieser Ordner beschreibt nicht nur, wie die Marke heute verstanden wird, sondern auch, wie sie auf Basis neuer Zielgruppen- und Marktdaten präziser werden kann.
+
+Wichtige Bereiche:
+
+- `1-identity/`: Markenkern, Positionierung, Tonalität, Werte
+- `2-audience/`: Zielgruppe, Pain Points, Personas, Customer Journey
+- `3-strategy/`: Methode, Reifegradmodell, Website als Mittelpunkt
+- `4-website/`: Seitenarchitektur, Design-System, Seitenkonzepte, Conversion-Architektur
+- `5-messaging/`: Claims, Kurztexte, Über-Jona-Texte, Value Propositions
+
+Bei Copy-, Positionierungs-, Zielgruppen- und Website-Konzeptaufgaben zuerst diesen Ordner lesen.
+
+### `02_data/`
+
+Enthält von Menschen eingefügte oder aus Tools exportierte Daten. Dazu gehören unter anderem Google Analytics, Google Search Console, Google Tag Manager, Keyword Planner, Sitemaps und Audits.
+
+Dieser Ordner ist die Belegschicht des Systems. Agenten sollen Daten hier auswerten, aber nicht ungekennzeichnet in strategische Aussagen verwandeln. Wenn aus Daten eine neue Annahme entsteht, wird sie in der passenden Datei in `01_brand`, `04_marketing` oder `05_sales` mit Quelle und Datum ergänzt.
+
+### `03_theme/`
+
+Enthält das live genutzte WordPress-Theme. Änderungen hier können direkte Auswirkungen auf die Website haben.
+
+Wichtige Bereiche:
+
+- `functions.php`: Theme-Logik, SEO-Loader, strukturierte Daten
+- `front-page.php`, `page-*.php`: Templates
+- `assets/`: gebaute CSS-, JS- und Bilddateien
+- `src/`: Quell-CSS und Quell-JS
+- `seo/*.json`: SEO-Daten pro WordPress-Seite
+
+Bei technischen Website-Aufgaben immer die bestehenden Theme-Konventionen prüfen, bevor neue Muster eingeführt werden.
+
+### `04_marketing/`
+
+Bündelt kanalbezogene Strategie, Inhalte und Arbeitsmaterialien. Dieser Ordner ist für Akquise-Aktivitäten vor und neben der Website gedacht.
+
+Typische Inhalte:
+
+- SEO-Planung und Keyword-Material
+- Instagram-Posts, Carousels und Bildprompts
+- E-Mail- und Google-Ads-Material
+- kanalübergreifender `masterplan.md`
+
+### `05_sales/`
+
+Soll langfristig den Prozess von der Kundenanfrage bis zur Angebotsunterzeichnung abdecken. Aktuell liegen hier vor allem Qualifikationsfragen und Angebotsmaterial.
+
+Agenten sollen diesen Ordner nutzen, wenn es um Lead-Qualifizierung, Erstgespräche, Angebotslogik, Einwandbehandlung oder Prozessstandardisierung geht.
+
+### `99_agents/`
+
+Enthält Kontext für KI-Agenten. Diese README ist die Projektkarte. `CONVENTIONS.md` enthält verbindliche Arbeitsregeln. Spezialisierte Agenten-Briefings wie `AUDIT_AGENT.md`, `SITEMAP_AGENT.md` und `INSTAGRAM_AGENT.md` beschreiben wiederkehrende Workflows.
+
+## Wichtigste Dateien nach Tasktyp
+
+| Tasktyp | Vorher lesen |
 |---|---|
-| `backlog.md` | Was als nächstes zu tun ist |
-| `03_theme/functions.php` | Theme-Code, SEO-Loader, Schema |
-| `03_theme/seo/*.json` | SEO-Daten pro Seite |
-| `02_data/processed/seo-audit-20260610.md` | Ausgangslage & Begründung der Maßnahmen |
-| `01_brand/1-identity/` | Tonalität, Positionierung – bei Copy-Aufgaben lesen |
+| Nächste Aufgaben planen | `backlog.md`, `experiments.md`, `changelog.md` |
+| Brand, Positionierung, Tonalität | `01_brand/1-identity/`, `01_brand/5-messaging/` |
+| Zielgruppe, Pain Points, Customer Journey | `01_brand/2-audience/`, relevante Reports in `02_data/` |
+| Website-Strategie und Conversion | `01_brand/4-website/`, `03_theme/page-*.php`, `03_theme/front-page.php` |
+| Audit erstellen | `99_agents/AUDIT_AGENT.md`, `backlog.md`, `changelog.md`, `experiments.md`, relevante Quellen in `02_data/` |
+| SEO-Auswertung | `99_agents/AUDIT_AGENT.md`, `02_data/01_audits/`, `02_data/google-search-console/`, `02_data/keyword-planner/`, `03_theme/seo/` |
+| WordPress-Umsetzung | `03_theme/functions.php`, betroffene Templates, `03_theme/seo/` |
+| Marketingkampagnen | `04_marketing/README.md`, `04_marketing/masterplan.md`, passender Kanalordner |
+| Instagram-Content | `99_agents/INSTAGRAM_AGENT.md`, `04_marketing/instagram/README.md`, bisherige Posts, relevante Audits |
+| Sales-Prozess | `05_sales/` |
 
----
+## Arbeitsweise für Agenten
 
-## Konventionen
-
-### Neue WordPress-Seite anlegen
-Bei jeder neuen Seite immer auch eine SEO-JSON-Datei anlegen:
-
-```
-03_theme/seo/[wordpress-slug].json
-```
-
-Format:
-```json
-{
-  "title": "Seiten-Title | Agentur JG",
-  "description": "Meta Description (120–155 Zeichen)."
-}
-```
-
-Der PHP-Loader in `functions.php` (`agentur_jg_seo_config()`) liest diese Datei
-automatisch anhand des WordPress-Slugs. Keine weiteren Schritte nötig.
-
-Geplante Seiten (Stufe 4):
-```
-03_theme/seo/webdesign-fuer-kmu.json
-03_theme/seo/seo-fuer-kleine-unternehmen.json
-03_theme/seo/webdesign-rhein-lahn-kreis.json
-03_theme/seo/google-ads-betreuung.json
-```
-
-### SEO-Schema (JSON-LD)
-Strukturierte Daten leben in `functions.php`, nicht in Rank Math.  
-Startseite: `agentur_jg_front_page_schema()` (Zeile ~281)  
-Neue Seiten: analog als eigene Funktion mit `is_page('slug')`-Guard einfügen.
-
-### Weiterleitungen
-Nicht über Rank Math, sondern in `.htaccess` im Webroot.
-
-### Rank Math
-Nur zwei Module aktiv: **Sitemap** und **Sofortige Indexierung**.  
-Alle anderen Module deaktiviert. Rank Math verwaltet keine Daten mehr.
+1. Erst die passende Kontextschicht lesen: Brand, Daten, Theme, Marketing oder Sales.
+2. Bestehende Aussagen nicht stillschweigend überschreiben. Neue Erkenntnisse als revisionierbare Ergänzung dokumentieren.
+3. Zwischen Rohdaten, Analyse, Hypothese und beschlossener Strategie unterscheiden.
+4. Bei Website-Code besonders vorsichtig arbeiten, weil `03_theme` das Live-Theme abbildet.
+5. Bei wiederkehrenden Regeln die [CONVENTIONS.md](CONVENTIONS.md) beachten.

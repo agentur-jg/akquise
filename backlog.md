@@ -1,3 +1,54 @@
+# Backlog – Kanalübergreifendes Marketing
+
+**Quelle:** `04_marketing/masterplan.md`  
+**Ziel:** Marketingkampagnen aus Strategie in konkrete Arbeitsaufgaben überführen.
+
+## Instagram
+
+- [ ] **Ersten Instagram-Post veröffentlichen**  
+  Material liegt in `04_marketing/instagram/20260614_post_01/`. Nach Veröffentlichung Leistungsdaten sammeln, sobald verfügbar.
+
+- [ ] **Instagram-Basisrhythmus etablieren: 4 Posts pro Monat**  
+  Zielmix: 2 Mehrwert-Posts, 1 Einblick-Post, 1 Persönlichkeits- oder Standpunkt-Post. Umsetzung nach `99_agents/INSTAGRAM_AGENT.md`.
+
+- [ ] **Instagram-Auswertung vorbereiten**  
+  Manuelle oder exportierte Daten zu Reichweite, Profilbesuchen, Website-Klicks, Saves, Shares, Kommentaren und DMs in `02_data/` ablegen.
+
+## Blog & Content
+
+- [ ] **Ersten Blogartikel planen und schreiben**  
+  Priorisierte Themen aus `04_marketing/masterplan.md`: Kosten einer Website, Website bringt keine Anfragen, SEO vs. Google Ads, lokale SEO für Handwerk/KMU.
+
+- [ ] **Content-Mehrfachnutzung einplanen**  
+  Jeden Blogartikel als Quelle für mindestens ein Instagram-Carousel und optional einen LinkedIn-Post verwenden.
+
+- [ ] **Lead-Magnet-Konzept ausarbeiten**  
+  Arbeitstitel: „7 Fragen, die Ihre Website beantworten muss – Checkliste für KMU“. Ziel: spätere Opt-in-E-Mail-Basis.
+
+## Direkte lokale Akquise
+
+- [ ] **Empfehlungen aktivieren**  
+  KOPP Umwelt und Max KFZ nach Weiterempfehlungen fragen. Falls möglich zusätzlich um Bewertung und Partnerlink bitten.
+
+- [ ] **LinkedIn-Profil professionalisieren**  
+  Profil auf Positionierung Agentur JG ausrichten: inhabergeführte KMU, Website als messbarer Vertriebskanal, regionale Nähe.
+
+- [ ] **LinkedIn-Direktansprache testen**  
+  Wöchentlich relevante Unternehmer aus der Region identifizieren und individuell vernetzen. Kein Massenpitch.
+
+- [ ] **Lokale Netzwerke recherchieren**  
+  IHK Koblenz, Unternehmertreffen und regionale Veranstaltungen prüfen.
+
+- [ ] **Briefpost-Kampagne optional konzipieren**  
+  Nur für ausgewählte lokale KMU. Ziel: individuelle Website-Analyse anbieten, keine Massenwerbung.
+
+## Google Ads
+
+- [ ] **Google-Ads-Startbedingung prüfen**  
+  Erst wieder aufnehmen, wenn mindestens 500 bis 1.000 Euro Monatsbudget verfügbar sind und Zielseiten/Tracking stabil laufen.
+
+---
+
 # Backlog – Kanal SEO
 **Ziel:** 1 qualifizierter SEO-Lead pro Monat → langfristig 1 Neukunde/Monat über organische Suche  
 **Stand:** 13. Juni 2026 | Stufe 1 + Stufe 3 + Stufe 4 + Stufe 5 abgeschlossen | Basis: SEO Audit `02_data/processed/seo-audit-20260610.md` | Keyword-Recherche: `02_data/processed/keyword-recherche-20260612.md`
